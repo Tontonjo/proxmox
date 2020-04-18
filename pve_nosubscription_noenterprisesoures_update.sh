@@ -43,8 +43,8 @@ echo "adding sources list"
 echo "deb http://download.proxmox.com/debian/pve $distribution pve-no-subscription" >> /etc/apt/sources.list
 echo "backuping /etc/apt/sources.list.d/pve-enterprise.list"
 cp -n "/etc/apt/sources.list.d/pve-enterprise.list" "/etc/apt/sources.list.d/pve-enterprise.list.BCK"
-echo "deleting /etc/apt/sources.list.d/pve-enterprise.list"
-rm -f /etc/apt/sources.list.d/pve-enterprise.list
+echo " #/etc/apt/sources.list.d/pve-enterprise.list"
+sed -i 's/^/#/' /etc/apt/sources.list.d/pve-enterprise.list
 
 #4: update:
 echo "updating"
