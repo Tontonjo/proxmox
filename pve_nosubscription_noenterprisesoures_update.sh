@@ -25,7 +25,7 @@ varversion=1.0
 # apt-get -y dist-upgrade
 
 echo "Tonton Jo - 2020"
-echo " Proxmox subscription and sources inital setup V$varversion"
+echo "Proxmox subscription and sources inital setup V$varversion"
 #1: Defining distribution name:
 
 echo "defining distribution name for sources list"
