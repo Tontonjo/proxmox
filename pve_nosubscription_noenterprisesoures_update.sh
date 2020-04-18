@@ -19,10 +19,12 @@ varversion=1.1
 
 # distribution=$(. /etc/*-release;echo $VERSION_CODENAME)
 # sed -i.bak "s/data.status !== 'Active'/false/g" /usr/share/javascript/proxmox-widget-toolkit/proxmoxlib.js && systemctl restart pveproxy.service
-# echo "deb http://download.proxmox.com/debian/pve $distribution pve-no-subscription" > /etc/apt/sources.list
+# sed -i "\$adeb http://download.proxmox.com/debian/pve $distribution pve-no-subscription" /etc/apt/sources.list
 # sed -i 's/^/#/' /etc/apt/sources.list.d/pve-enterprise.list
 # apt-get -y update
 # apt-get -y upgrade
+
+
 echo "----------------------------------------------------------------"
 echo "Tonton Jo - 2020"
 echo "Proxmox subscription and sources inital setup V$varversion"
