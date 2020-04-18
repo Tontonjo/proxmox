@@ -4,8 +4,9 @@
 #Script for initial proxomox subscription and sources list settings
 #https://www.youtube.com/watch?v=X-a_LGKFIPg
 
-varversion=1.0
+varversion=1.1
 #V1.0: Initial Release
+#V1.1: echo was writing source at end of last line - replaced with sed
 
 #Sources:
 #https://pve.proxmox.com/wiki/Package_Repositories
