@@ -39,10 +39,24 @@ sed -i.bak "s/data.status !== 'Active'/false/g" /usr/share/javascript/proxmox-wi
 
 echo "backuping actual file -just in case."
 cp -n "/etc/apt/sources.list" "/etc/apt/sources.list.BCK"
-echo "adding sources list"
-echo "deb http://download.proxmox.com/debian/pve $distribution pve-no-subscription" >> /etc/apt/sources.list
-echo " #/etc/apt/sources.list.d/pve-enterprise.list"
-sed -i 's/^/#/' /etc/apt/sources.list.d/pve-enterprise.list
+echo "Checkin Source list"
+if grep -Fxq "deb http://download.proxmox.com/debian/pve $distribution pve-no-subscription" /etc/apt/sources.list
+then
+    echo "Source looks alredy configured - skipping"
+else
+    echo "adding sources list"
+    echo "deb http://download.proxmox.com/debian/pve $distribution pve-no-subscription" >> /etc/apt/sources.list
+fi
+
+echo "Checking Enterprise Source list"
+if grep -Fxq "#" /etc/apt/sources.list
+then
+    echo "Entreprise repo looks already commented - Skipping"
+else
+   echo "Hiding Enterprise sources list"
+   sed -i 's/^/#/' /etc/apt/sources.list.d/pve-enterprise.list
+fi
+
 
 #4: update:
 echo "updating"
