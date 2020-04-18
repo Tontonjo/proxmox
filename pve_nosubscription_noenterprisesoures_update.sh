@@ -49,7 +49,7 @@ else
 fi
 
 echo "Checking Enterprise Source list"
-if grep -Fxq "#" /etc/apt/sources.list
+if grep -Fxq "deb https://enterprise.proxmox.com/debian/pve $distribution pve-enterprise" /etc/apt/sources.list.d/pve-enterprise.list
 then
     echo "Entreprise repo looks already commented - Skipping"
 else
@@ -59,7 +59,7 @@ fi
 
 
 #4: update:
-echo "updating"
+echo "Updating System"
 apt-get -y update
 apt-get -y upgrade
 apt-get -y dist-upgrade
