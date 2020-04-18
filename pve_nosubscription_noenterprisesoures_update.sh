@@ -22,7 +22,6 @@ varversion=1.0
 # sed -i 's/^/#/' /etc/apt/sources.list.d/pve-enterprise.list
 # apt-get -y update
 # apt-get -y upgrade
-# apt-get -y dist-upgrade
 
 echo "Tonton Jo - 2020"
 echo "Proxmox subscription and sources inital setup V$varversion"
