@@ -42,7 +42,7 @@ sed -i.bak "s/data.status !== 'Active'/false/g" /usr/share/javascript/proxmox-wi
 echo "- Checkin Sources list"
 if grep -Fxq "deb http://download.proxmox.com/debian/pve $distribution pve-no-subscription" /etc/apt/sources.list
 then
-    echo "Source looks alredy configured - skipping"
+    echo "Source looks alredy configured - Skipping"
 else
     echo "Adding new entry to sources.list"
     sed -i "\$adeb http://download.proxmox.com/debian/pve $distribution pve-no-subscription" /etc/apt/sources.list
