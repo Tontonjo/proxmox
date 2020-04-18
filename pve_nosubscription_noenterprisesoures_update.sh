@@ -43,7 +43,7 @@ then
     echo "Source looks alredy configured - skipping"
 else
     echo "adding sources list"
-    echo `deb http://download.proxmox.com/debian/pve $distribution pve-no-subscription` >> /etc/apt/sources.list
+    echo 'deb http://download.proxmox.com/debian/pve $distribution pve-no-subscription' >> /etc/apt/sources.list
 fi
 
 echo "Checking Enterprise Source list"
