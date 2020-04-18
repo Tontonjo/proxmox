@@ -4,6 +4,9 @@
 #Script for initial proxomox subscription and sources list settings
 #https://www.youtube.com/watch?v=X-a_LGKFIPg
 
+varversion=1.0
+#V1.0: Initial Release
+
 #Sources:
 #https://pve.proxmox.com/wiki/Package_Repositories
 #https://www.sysorchestra.com/remove-proxmox-5-3-no-valid-subscription-message/
@@ -23,6 +26,7 @@
 # apt-get -y dist-upgrade
 
 echo "Tonton Jo - 2020"
+echo " Proxmox subscription and sources inital setup V$varversion"
 #1: Defining distribution name:
 
 echo "defining distribution name for sources list"
