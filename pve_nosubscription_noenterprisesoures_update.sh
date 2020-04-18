@@ -1,8 +1,8 @@
 #!/bin/bash
 
-# Tonton Jo - 2020
+#Tonton Jo - 2020
 #Script for initial proxomox subscription and sources list settings
-# https://www.youtube.com/watch?v=X-a_LGKFIPg
+#https://www.youtube.com/watch?v=X-a_LGKFIPg
 
 #Sources:
 #https://pve.proxmox.com/wiki/Package_Repositories
@@ -24,19 +24,19 @@
 # apt-get -y dist-upgrade
 
 echo "Tonton Jo - 2020"
-#1
-# Defining distribution name:
+#1: Defining distribution name:
+
 echo "defining distribution name for sources list"
 distribution=$(. /etc/*-release;echo $VERSION_CODENAME)
 
-#2
-#Remove Subscription:
+#2: Remove Subscription:
+
 echo "removing No Valid Subscription Message"
 sed -i.bak "s/data.status !== 'Active'/false/g" /usr/share/javascript/proxmox-widget-toolkit/proxmoxlib.js && systemctl restart pveproxy.service
 
-#3
-#Edit sources list:
+#3: Edit sources list:
 # -n for not overwritting if file already exist
+
 echo "backuping actual file -just in case."
 cp -n "/etc/apt/sources.list" "/etc/apt/sources.list.BCK"
 echo "adding sources list"
