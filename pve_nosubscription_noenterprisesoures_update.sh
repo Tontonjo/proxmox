@@ -41,8 +41,6 @@ echo "backuping actual file -just in case."
 cp -n "/etc/apt/sources.list" "/etc/apt/sources.list.BCK"
 echo "adding sources list"
 echo "deb http://download.proxmox.com/debian/pve $distribution pve-no-subscription" >> /etc/apt/sources.list
-echo "backuping /etc/apt/sources.list.d/pve-enterprise.list"
-cp -n "/etc/apt/sources.list.d/pve-enterprise.list" "/etc/apt/sources.list.d/pve-enterprise.list.BCK"
 echo " #/etc/apt/sources.list.d/pve-enterprise.list"
 sed -i 's/^/#/' /etc/apt/sources.list.d/pve-enterprise.list
 
