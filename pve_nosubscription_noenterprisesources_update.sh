@@ -41,7 +41,7 @@ sed -i.bak "s/data.status !== 'Active'/false/g" /usr/share/javascript/proxmox-wi
 
 #3: Edit sources list:
 
-echo "- Checkin Sources list"
+echo "- Checking Sources list"
 if grep -Fxq "deb http://download.proxmox.com/debian/pve $distribution pve-no-subscription" /etc/apt/sources.list
 then
     echo "Source looks alredy configured - Skipping"
