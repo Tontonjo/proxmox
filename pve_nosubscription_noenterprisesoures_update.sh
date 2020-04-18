@@ -17,8 +17,7 @@
 # sed -i.bak "s/data.status !== 'Active'/false/g" /usr/share/javascript/proxmox-widget-toolkit/proxmoxlib.js && systemctl restart pveproxy.service
 # cp -n "/etc/apt/sources.list" "/etc/apt/sources.list.BCK"
 # echo "deb http://download.proxmox.com/debian/pve $distribution pve-no-subscription" > /etc/apt/sources.list
-# cp -n "/etc/apt/sources.list.d/pve-enterprise.list" "/etc/apt/sources.list.d/pve-enterprise.list.BCK"
-# rm -f /etc/apt/sources.list.d/pve-enterprise.list
+# sed -i 's/^/#/' /etc/apt/sources.list.d/pve-enterprise.list
 # apt-get -y update
 # apt-get -y upgrade
 # apt-get -y dist-upgrade
