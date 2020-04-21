@@ -14,7 +14,8 @@
 
 # USAGE
 # You can run this scritp directly using:
-# wget -O - https://raw.githubusercontent.com/Tontonjo/proxmox/master/ez_proxmox_mail_configurator.sh | bash
+# wget https://raw.githubusercontent.com/Tontonjo/proxmox/master/ez_proxmox_mail_configurator.sh
+# bash ez_proxmox_mail_configurator.sh
 
 # GMAIL: you need to allow less secure applications: 
 # https://myaccount.google.com/lesssecureapps
