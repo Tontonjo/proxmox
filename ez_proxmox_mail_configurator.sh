@@ -32,9 +32,10 @@
 # "/etc/postfix/canonical"
 # "/etc/postfix/sasl_passwd"
 
-varversion=1.1
+varversion=1.2
 #V1.0: Initial Release - proof of concept
 #V1.1: Small corrections
+#V1.2: add sender address - use it for canonical
 
 if [ $(dpkg-query -W -f='${Status}' libsasl2-modules 2>/dev/null | grep -c "ok installed") -eq 0 ];
 then
@@ -104,6 +105,13 @@ show_menu(){
 			read 'varmailusername'
 			echo "What is the AUTHENTIFICATION PASSWORD?: "
 			read 'varmailpassword'
+			read -p  "Is the SENDER mail address the same as the AUTHENTIFICATION mail address?: " -n 1 -r 
+			if [[ $REPLY =~ ^[Yy]$ ]]; then
+			varsenderaddress=$varmailusername
+			else
+			echo "What is the sender address?: 
+			read 'varsenderaddress'
+			fi
 			read -p  "Use TLS?: y = yes / anything=no: " -n 1 -r 
 			if [[ $REPLY =~ ^[Yy]$ ]]; then
 			vartls=yes
@@ -124,7 +132,7 @@ show_menu(){
 			
 		fi
 		#Setting canonical file for sender - :
-		echo "root $varrootmail" > /etc/postfix/canonical
+		echo "root $varsenderaddress" > /etc/postfix/canonical
 		chmod 600 /etc/postfix/canonical
 		
 		# Preparing for password hash
