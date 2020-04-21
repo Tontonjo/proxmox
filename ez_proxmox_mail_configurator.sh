@@ -219,7 +219,7 @@ show_menu(){
 				    cp -rf /etc/aliases.BCK /etc/aliases
 					cp -rf /etc/postfix/main.cf.BCK /etc/postfix/main.cf
 					cp -rf /etc/postfix/canonical.BCK /etc/postfix/canonical
-					echo "- Restoration done - restarting services "
+					echo "- restarting services "
 					systemctl restart postfix
 					echo "- Restoration done"
 			fi
