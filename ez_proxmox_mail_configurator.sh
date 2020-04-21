@@ -105,7 +105,7 @@ show_menu(){
 			read 'varmailusername'
 			echo "What is the AUTHENTIFICATION PASSWORD?: "
 			read 'varmailpassword'
-			read -p  "Is the SENDER mail address the same as the AUTHENTIFICATION mail address?: " -n 1 -r 
+			read -p  "Is the SENDER mail address the same as the AUTHENTIFICATION mail address? y to use $varmailusername enter to set something else: " -n 1 -r 
 			if [[ $REPLY =~ ^[Yy]$ ]]; then
 			varsenderaddress=$varmailusername
 			else
