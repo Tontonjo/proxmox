@@ -26,6 +26,12 @@
 # https://suoption_pickedpport.google.com/accounts/answer/6010255
 # https://www.howtoforge.com/community/threads/solved-problem-with-outgoing-mail-from-server.53920/
 
+# Files:
+# "/etc/aliases"
+# "/etc/postfix/main.cf"
+# "/etc/postfix/canonical"
+# "/etc/postfix/sasl_passwd"
+
 varversion=1.0
 #V1.0: Initial Release - proof of concept
 
