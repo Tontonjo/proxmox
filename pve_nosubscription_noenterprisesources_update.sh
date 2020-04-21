@@ -1,6 +1,8 @@
 #!/bin/bash
 
 #Tonton Jo - 2020
+# Join me on Youtube: https://www.youtube.com/channel/UCnED3K6K5FDUp-x_8rwpsZw
+
 #Script for initial proxomox subscription and sources list settings
 #https://www.youtube.com/watch?v=X-a_LGKFIPg
 
