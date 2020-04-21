@@ -112,6 +112,7 @@ show_menu(){
 			echo "What is the sender address?: "
 			read 'varsenderaddress'
 			fi
+			echo " "
 			read -p  "Use TLS?: y = yes / anything=no: " -n 1 -r 
 			if [[ $REPLY =~ ^[Yy]$ ]]; then
 			vartls=yes
