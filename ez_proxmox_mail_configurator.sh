@@ -109,7 +109,7 @@ show_menu(){
 			if [[ $REPLY =~ ^[Yy]$ ]]; then
 			varsenderaddress=$varmailusername
 			else
-			echo "What is the sender address?: 
+			echo "What is the sender address?: "
 			read 'varsenderaddress'
 			fi
 			read -p  "Use TLS?: y = yes / anything=no: " -n 1 -r 
