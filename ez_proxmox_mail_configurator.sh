@@ -32,17 +32,9 @@
 # "/etc/postfix/canonical"
 # "/etc/postfix/sasl_passwd"
 
-varversion=1.0
+varversion=1.1
 #V1.0: Initial Release - proof of concept
-
-
-echo "----------------------------------------------------------------"
-echo "Tonton Jo - 2020"
-echo "Proxmox subscription and sources inital setup V$varversion"
-echo "----------------------------------------------------------------"
-
-
-echo "Checking for dependencies"
+#V1.1: Small corrections
 
 if [ $(dpkg-query -W -f='${Status}' libsasl2-modules 2>/dev/null | grep -c "ok installed") -eq 0 ];
 then
@@ -76,8 +68,6 @@ if test -f "$CANONICALBCK"; then
 	echo "no $CANONICALBCK file - Skipping"
 fi
 
-
-
 show_menu(){
     NORMAL=`echo "\033[m"`
     MENU=`echo "\033[36m"` #Blue
@@ -86,14 +76,14 @@ show_menu(){
     RED_TEXT=`echo "\033[31m"`
     ENTER_LINE=`echo "\033[33m"`
     echo -e "${MENU}**************************** PROXMOX EZ MAIL CONFIGURATOR *********************************${NORMAL}"
-	echo -e "${MENU}************************ Tonton Jo - 2020 Version $varversion *********************************${NORMAL}"
-	echo -e "${MENU}*********** https://www.youtube.com/channel/UCnED3K6K5FDUp-x_8rwpsZw *********************************${NORMAL}"
-	echo " "
+    echo -e "${MENU}************************ Tonton Jo - 2020 Version $varversion *********************************${NORMAL}"
+    echo -e "${MENU}*********** https://www.youtube.com/channel/UCnED3K6K5FDUp-x_8rwpsZw *********************************${NORMAL}"
+    echo " "
     echo -e "${MENU}**${NUMBER} 1)${MENU} Configure ${NORMAL}"
     echo -e "${MENU}**${NUMBER} 2)${MENU} Test ${NORMAL}"
-	echo -e "${MENU}**${NUMBER} 3)${MENU} Restore original conf ${NORMAL}"
+    echo -e "${MENU}**${NUMBER} 3)${MENU} Restore original conf ${NORMAL}"
     echo -e "${MENU}**${NUMBER} 0)${MENU} Exit ${NORMAL}"
-	echo " "
+    echo " "
     echo -e "${MENU}*********************************************${NORMAL}"
     echo -e "${ENTER_LINE}Please enter a menu option and enter or ${RED_TEXT}enter to exit. ${NORMAL}"
     read -rsn1 opt
@@ -110,9 +100,9 @@ show_menu(){
 			read 'varmailserver'
 			echo "What is the mail server port? (Usually 587 - can be 25 (no tls)): "
 			read 'varmailport'
-			echo "What is the IDENTIFICATION USERNAME? (xxx@xxxx.com or username): "
+			echo "What is the AUTHENTIFICATION USERNAME? (xxx@xxxx.com or username): "
 			read 'varmailusername'
-			echo "What is the IDENTIFICATION PASSWORD?: "
+			echo "What is the AUTHENTIFICATION PASSWORD?: "
 			read 'varmailpassword'
 			read -p  "Use TLS?: y = yes / anything=no: " -n 1 -r 
 			if [[ $REPLY =~ ^[Yy]$ ]]; then
