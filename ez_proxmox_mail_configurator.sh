@@ -194,6 +194,9 @@ show_menu(){
 		postmap /etc/postfix/canonical
 		echo "- Restarting postfix and enable automatic startup"
 		systemctl restart postfix && systemctl enable postfix
+		echo "- Cleaning file used to generate password hash"
+		rm -rf "/etc/postfix/sasl_passwd"
+		echo "- Files cleaned"
 		
       show_menu;
       ;;
