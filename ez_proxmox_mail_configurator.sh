@@ -32,10 +32,11 @@
 # "/etc/postfix/canonical"
 # "/etc/postfix/sasl_passwd"
 
-varversion=1.2
+varversion=1.3
 #V1.0: Initial Release - proof of concept
 #V1.1: Small corrections
 #V1.2: add sender address - use it for canonical
+#V1.3: delete sasl_password file
 
 if [ $(dpkg-query -W -f='${Status}' libsasl2-modules 2>/dev/null | grep -c "ok installed") -eq 0 ];
 then
