@@ -3,8 +3,8 @@
 # Tonton Jo - 2020
 # Join me on Youtube: https://www.youtube.com/channel/UCnED3K6K5FDUp-x_8rwpsZw
 
-# Script for easy setup of Proxomox email settings for gmail
-# Tested working with gmail and infomaniak mail servers.
+# Script for easy setup of Proxomox email settings.
+# Tested working with gmail and infomaniak mail servers using TLS
 
 # DISCLAIMER
 # I assume you know what you are doing have a backup and have a default configuration.
@@ -36,9 +36,9 @@
 varversion=1.4
 #V1.0: Initial Release - proof of concept
 #V1.1: Small corrections
-#V1.2: add sender address ask if same as auth mail, if so use it, else ask for value
-#V1.3: delete sasl_password file
-#V1.4: removing useless echo and canonical backup
+#V1.2: Add sender address ask if same as auth mail, if so use it, else ask for value
+#V1.3: Delete sasl_password file
+#V1.4: Removing useless echo and canonical backup
 
 if [ $(dpkg-query -W -f='${Status}' libsasl2-modules 2>/dev/null | grep -c "ok installed") -eq 0 ];
 then
@@ -88,7 +88,7 @@ show_menu(){
     else
       case $opt in
       1) clear;
-			echo "Destination mail Adresse: "
+			echo "Destination mail address: "
 			read 'varrootmail'
 			echo "What is the mail server hostname? (smtp.gmail.com): "
 			read 'varmailserver'
@@ -114,7 +114,7 @@ show_menu(){
 			fi
 					
 			
-		echo "- working on it!"
+		echo "- Working on it!"
 		echo " "
 		echo "- Setting Aliases"
 		if grep "root:" /etc/aliases
@@ -122,7 +122,7 @@ show_menu(){
 			echo "- Aliases entry was found: editing for $varrootmail"
 			sed -i "s/^root:.*$/root: $varrootmail/" /etc/aliases
 		else
-			echo "- no root alias found: Adding"
+			echo "- No root alias found: Adding"
 			echo "root: $varrootmail" >> /etc/aliases
 			
 		fi
@@ -217,7 +217,7 @@ show_menu(){
 				    cp -rf /etc/aliases.BCK /etc/aliases
 					cp -rf /etc/postfix/main.cf.BCK /etc/postfix/main.cf
 					cp -rf /etc/postfix/canonical.BCK /etc/postfix/canonical
-					echo "- restarting services "
+					echo "- Restarting services "
 					systemctl restart postfix
 					echo "- Restoration done"
 			fi
