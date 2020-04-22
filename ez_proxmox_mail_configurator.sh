@@ -32,21 +32,19 @@
 # "/etc/postfix/canonical"
 # "/etc/postfix/sasl_passwd"
 
-varversion=1.3
+varversion=1.4
 #V1.0: Initial Release - proof of concept
 #V1.1: Small corrections
 #V1.2: add sender address - use it for canonical
 #V1.3: delete sasl_password file
+#V1.4: removing useless echo and canonical backup
 
 if [ $(dpkg-query -W -f='${Status}' libsasl2-modules 2>/dev/null | grep -c "ok installed") -eq 0 ];
 then
   apt-get install -y libsasl2-modules;
 fi
 
-echo "I assume you know what you are doing have a backup and have a default configuration.
-this is aimed for simple gmail and may not work for every mail server"
-
-echo "backuping files before anything modifications - this wont be done if existing backup exist"
+# Backuping files before anything
 
 ALIASESBCK=/etc/aliases.BCK
 if test -f "$ALIASESBCK"; then
