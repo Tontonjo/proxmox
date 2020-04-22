@@ -30,7 +30,8 @@
 # "/etc/aliases"
 # "/etc/postfix/main.cf"
 # "/etc/postfix/canonical"
-# "/etc/postfix/sasl_passwd"
+# Logs:
+# "/var/log/mail.*
 
 varversion=1.4
 #V1.0: Initial Release - proof of concept
