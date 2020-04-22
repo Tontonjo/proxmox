@@ -31,7 +31,7 @@
 # "/etc/postfix/main.cf"
 # "/etc/postfix/canonical"
 # Logs:
-# "/var/log/mail.*
+# "/var/log/mail.*"
 
 varversion=1.4
 #V1.0: Initial Release - proof of concept
