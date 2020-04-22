@@ -62,13 +62,6 @@ if test -f "$MAINCFBCK"; then
 	cp -n /etc/postfix/main.cf /etc/postfix/main.cf.BCK
 	echo "backuped "$MAINCFBCK""
 fi
-CANONICALBCK=/etc/postfix/canonical
-if test -f "$CANONICALBCK"; then
-    echo "$CANONICALBCK file exist - backuping in case"
-	cp -n /etc/postfix/canonical /etc/postfix/canonical.BCK
-	else
-	echo "no $CANONICALBCK file - Skipping"
-fi
 
 show_menu(){
     NORMAL=`echo "\033[m"`
