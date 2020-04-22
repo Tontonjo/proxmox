@@ -35,7 +35,7 @@
 varversion=1.4
 #V1.0: Initial Release - proof of concept
 #V1.1: Small corrections
-#V1.2: add sender address - use it for canonical
+#V1.2: add sender address ask if same as auth mail, if so use it, else ask for value
 #V1.3: delete sasl_password file
 #V1.4: removing useless echo and canonical backup
 
