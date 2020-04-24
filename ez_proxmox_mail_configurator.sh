@@ -33,7 +33,7 @@
 # Logs:
 # "/var/log/mail.*"
 
-varversion=1.4
+varversion=1.5
 #V1.0: Initial Release - proof of concept
 #V1.1: Small corrections
 #V1.2: Add sender address ask if same as auth mail, if so use it, else ask for value
