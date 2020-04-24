@@ -238,7 +238,7 @@ show_menu(){
 				echo "setting "smtputf8_enable=no" to correct "SMTPUTF8 was required but not supported""
 				fi
 		        else
-			echo "- No configured error found :-)"
+			echo "- No configured error found - nothing to do!"
 			fi
 	  show_menu;	
       ;;
