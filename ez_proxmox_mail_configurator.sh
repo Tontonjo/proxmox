@@ -214,9 +214,8 @@ show_menu(){
 				then
 					echo " "
 					echo "- Restoring default configuration files"
-				    cp -rf /etc/aliases.BCK /etc/aliases
+				        cp -rf /etc/aliases.BCK /etc/aliases
 					cp -rf /etc/postfix/main.cf.BCK /etc/postfix/main.cf
-					cp -rf /etc/postfix/canonical.BCK /etc/postfix/canonical
 					echo "- Restarting services "
 					systemctl restart postfix
 					echo "- Restoration done"
