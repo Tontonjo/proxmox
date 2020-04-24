@@ -39,6 +39,7 @@ varversion=1.4
 #V1.2: Add sender address ask if same as auth mail, if so use it, else ask for value
 #V1.3: Delete sasl_password file
 #V1.4: Removing useless echo and canonical backup
+#V1.5: Add menu to check logs for known errors - add error "SMTPUTF8 was required" and corrections
 
 if [ $(dpkg-query -W -f='${Status}' libsasl2-modules 2>/dev/null | grep -c "ok installed") -eq 0 ];
 then
@@ -76,6 +77,7 @@ show_menu(){
     echo -e "${MENU}**${NUMBER} 1)${MENU} Configure ${NORMAL}"
     echo -e "${MENU}**${NUMBER} 2)${MENU} Test ${NORMAL}"
     echo -e "${MENU}**${NUMBER} 3)${MENU} Restore original conf ${NORMAL}"
+    echo -e "${MENU}**${NUMBER} 4)${MENU} Check logs for error - attempt to correct ${NORMAL}"
     echo -e "${MENU}**${NUMBER} 0)${MENU} Exit ${NORMAL}"
     echo " "
     echo -e "${MENU}*********************************************${NORMAL}"
@@ -220,7 +222,24 @@ show_menu(){
 					systemctl restart postfix
 					echo "- Restoration done"
 			fi
-
+  
+	  show_menu;
+	     ;;
+	        4) clear;
+			if grep "SMTPUTF8 is required" "/var/log/mail.log"
+			then
+			echo "- Error may have been founds "
+			read -p "Looks like there's a error as SMTPUTF8 was required but not supported: try to fix? y = yes / anything=no: " -n 1 -r
+			if [[ $REPLY =~ ^[Yy]$ ]]
+			then
+			postconf smtputf8_enable=no
+			postfix reload
+			echo " "
+			echo "setting "smtputf8_enable=no" to correct "SMTPUTF8 was required but not supported""
+			else
+			echo "- No configured error found :-)"
+		fi
+		fi
 	  show_menu;	
       ;;
       0) clear;
