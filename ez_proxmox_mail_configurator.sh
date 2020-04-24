@@ -228,7 +228,7 @@ show_menu(){
 	        4) clear;
 			if grep "SMTPUTF8 is required" "/var/log/mail.log"
 			then
-			echo "- Error may have been founds "
+			echo "- Errors may have been found "
 			read -p "Looks like there's a error as SMTPUTF8 was required but not supported: try to fix? y = yes / anything=no: " -n 1 -r
 			if [[ $REPLY =~ ^[Yy]$ ]]
 			then
