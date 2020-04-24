@@ -230,16 +230,16 @@ show_menu(){
 			then
 			echo "- Errors may have been found "
 			read -p "Looks like there's a error as SMTPUTF8 was required but not supported: try to fix? y = yes / anything=no: " -n 1 -r
-			if [[ $REPLY =~ ^[Yy]$ ]]
-			then
-			postconf smtputf8_enable=no
-			postfix reload
-			echo " "
-			echo "setting "smtputf8_enable=no" to correct "SMTPUTF8 was required but not supported""
-			else
+				if [[ $REPLY =~ ^[Yy]$ ]]
+				then
+				postconf smtputf8_enable=no
+				postfix reload
+				echo " "
+				echo "setting "smtputf8_enable=no" to correct "SMTPUTF8 was required but not supported""
+				fi
+		        else
 			echo "- No configured error found :-)"
-		fi
-		fi
+			fi
 	  show_menu;	
       ;;
       0) clear;
