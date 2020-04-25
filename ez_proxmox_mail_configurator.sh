@@ -232,10 +232,15 @@ show_menu(){
 			read -p "Looks like there's a error as SMTPUTF8 was required but not supported: try to fix? y = yes / anything=no: " -n 1 -r
 				if [[ $REPLY =~ ^[Yy]$ ]]
 				then
-				postconf smtputf8_enable=no
-				postfix reload
-				echo " "
-				echo "setting "smtputf8_enable=no" to correct "SMTPUTF8 was required but not supported""
+					if grep "smtputf8_enable=no" /etc/postfix/main.cf
+					then
+					echo "- Fix looks already applied!"
+					else
+					echo " "
+					echo "- Setting "smtputf8_enable=no" to correct "SMTPUTF8 was required but not supported""
+					postconf smtputf8_enable=no
+					postfix reload
+				  fi 
 				fi
 		        else
 			echo "- No configured error found - nothing to do!"
