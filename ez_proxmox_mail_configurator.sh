@@ -33,13 +33,14 @@
 # Logs:
 # "/var/log/mail.*"
 
-varversion=1.5
+varversion=1.6
 #V1.0: Initial Release - proof of concept
 #V1.1: Small corrections
 #V1.2: Add sender address ask if same as auth mail, if so use it, else ask for value
 #V1.3: Delete sasl_password file
 #V1.4: Removing useless echo and canonical backup
 #V1.5: Add menu to check logs for known errors - add error "SMTPUTF8 was required" and corrections
+#V1.6: Change sed for postmap command / swap restore and fix menus
 
 if [ $(dpkg-query -W -f='${Status}' libsasl2-modules 2>/dev/null | grep -c "ok installed") -eq 0 ];
 then
@@ -76,8 +77,8 @@ show_menu(){
     echo " "
     echo -e "${MENU}**${NUMBER} 1)${MENU} Configure ${NORMAL}"
     echo -e "${MENU}**${NUMBER} 2)${MENU} Test ${NORMAL}"
-    echo -e "${MENU}**${NUMBER} 3)${MENU} Restore original conf ${NORMAL}"
-    echo -e "${MENU}**${NUMBER} 4)${MENU} Check logs for error - attempt to correct ${NORMAL}"
+    echo -e "${MENU}**${NUMBER} 3)${MENU} Check logs for error - attempt to correct ${NORMAL}"
+    echo -e "${MENU}**${NUMBER} 4)${MENU} Restore original conf ${NORMAL}"
     echo -e "${MENU}**${NUMBER} 0)${MENU} Exit ${NORMAL}"
     echo " "
     echo -e "${MENU}*********************************************${NORMAL}"
@@ -128,6 +129,7 @@ show_menu(){
 			echo "root: $varrootmail" >> /etc/aliases
 			
 		fi
+		
 		#Setting canonical file for sender - :
 		echo "root $varsenderaddress" > /etc/postfix/canonical
 		chmod 600 /etc/postfix/canonical
@@ -136,32 +138,27 @@ show_menu(){
 		echo [$varmailserver]:$varmailport $varmailusername:$varmailpassword > /etc/postfix/sasl_passwd
 		chmod 600 /etc/postfix/sasl_passwd 
 		
+		# Add mailserver in main.cf
 		sed -i "/#/!s/\(relayhost[[:space:]]*=[[:space:]]*\)\(.*\)/\1"[$varmailserver]:"$varmailport""/"  /etc/postfix/main.cf
 		
 		# Checking TLS settings
-		if grep "smtp_use_tls" /etc/apt/sources.list /etc/postfix/main.cf
-			then
-			echo "- TLS value found: Setting TLS entry"
-			sed -i "/#/!s/\(smtp_use_tls[[:space:]]*=[[:space:]]*\)\(.*\)/\1"$vartls"/"  /etc/postfix/main.cf
-		else
-			echo "- No TLS entry: adding"
-			echo "smtp_use_tls = $vartls" >> /etc/postfix/main.cf
-			
-		fi
+		echo "- Setting correct TLS Settings: $vartls"
+		postconf smtp_use_tls=$vartls
+		
 		# Checking for password hash entry
-				if grep "smtp_sasl_password_maps" /etc/postfix/main.cf
+			if grep "smtp_sasl_password_maps" /etc/postfix/main.cf
 			then
 			echo "- Password hashe looks setted-up"
 		else
 			echo "- Adding password hash entry"
-			echo "smtp_sasl_password_maps = hash:/etc/postfix/sasl_passwd" >> /etc/postfix/main.cf
+			postconf smtp_sasl_password_maps=hash:/etc/postfix/sasl_passwd
 		fi
 		#checking for certificate
 		if grep "smtp_tls_CAfile" /etc/postfix/main.cf
 			then
 			echo "- TLS CA File looks setted-up"
 			else
-			echo "smtp_tls_CAfile = /etc/ssl/certs/ca-certificates.crt" >> /etc/postfix/main.cf
+			postconf smtp_tls_CAfile=/etc/ssl/certs/ca-certificates.crt
 		fi
 		# Adding sasl security options
 	    # eliminates default security options which are imcompatible with gmail
@@ -169,19 +166,19 @@ show_menu(){
 			then
 			echo "- Google smtp_sasl_security_options looks setted-up"
 			else
-			echo "smtp_sasl_security_options = noanonymous" >> /etc/postfix/main.cf
+			postconf smtp_sasl_security_options=noanonymous
 		fi
 		if grep "smtp_sasl_auth_enable" /etc/postfix/main.cf
 			then
 			echo "- Authentification looks enable - Good"
 			else
-			echo "smtp_sasl_auth_enable = yes" >> /etc/postfix/main.cf
+			postconf smtp_sasl_auth_enable=yes
 		fi 
 		if grep "sender_canonical_maps" /etc/postfix/main.cf
 			then
 			echo "- Canonical entry found - Good"
 			else
-			echo "sender_canonical_maps = hash:/etc/postfix/canonical" >> /etc/postfix/main.cf
+			postconf sender_canonical_maps=hash:/etc/postfix/canonical
 		fi 
 		
 		echo "- Encrypting password and canonical entry"
@@ -209,23 +206,7 @@ show_menu(){
 	  
 	  show_menu;	
       ;;
-
-      3) clear;
-		read -p "Do you really want to restore: y=yes - Anything=no: " -n 1 -r
-			if [[ $REPLY =~ ^[Yy]$ ]]
-				then
-					echo " "
-					echo "- Restoring default configuration files"
-				        cp -rf /etc/aliases.BCK /etc/aliases
-					cp -rf /etc/postfix/main.cf.BCK /etc/postfix/main.cf
-					echo "- Restarting services "
-					systemctl restart postfix
-					echo "- Restoration done"
-			fi
-  
-	  show_menu;
-	     ;;
-	        4) clear;
+	        3) clear;
 			if grep "SMTPUTF8 is required" "/var/log/mail.log"
 			then
 			echo "- Errors may have been found "
@@ -247,6 +228,22 @@ show_menu(){
 			fi
 	  show_menu;	
       ;;
+      4) clear;
+		read -p "Do you really want to restore: y=yes - Anything=no: " -n 1 -r
+			if [[ $REPLY =~ ^[Yy]$ ]]
+				then
+					echo " "
+					echo "- Restoring default configuration files"
+				        cp -rf /etc/aliases.BCK /etc/aliases
+					cp -rf /etc/postfix/main.cf.BCK /etc/postfix/main.cf
+					echo "- Restarting services "
+					systemctl restart postfix
+					echo "- Restoration done"
+			fi
+  
+	  show_menu;
+	     ;;
+
       0) clear;
       exit
       ;;
