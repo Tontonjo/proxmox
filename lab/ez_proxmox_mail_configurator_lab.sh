@@ -136,6 +136,7 @@ show_menu(){
 		echo [$varmailserver]:$varmailport $varmailusername:$varmailpassword > /etc/postfix/sasl_passwd
 		chmod 600 /etc/postfix/sasl_passwd 
 		
+		# Add mailserver in main.cf
 		sed -i "/#/!s/\(relayhost[[:space:]]*=[[:space:]]*\)\(.*\)/\1"[$varmailserver]:"$varmailport""/"  /etc/postfix/main.cf
 		
 		# Checking TLS settings
@@ -145,7 +146,8 @@ show_menu(){
 			sed -i "/#/!s/\(smtp_use_tls[[:space:]]*=[[:space:]]*\)\(.*\)/\1"$vartls"/"  /etc/postfix/main.cf
 		else
 			echo "- No TLS entry: adding"
-			echo "smtp_use_tls = $vartls" >> /etc/postfix/main.cf
+			postconf smtp_use_tls=$vartls
+			#echo "smtp_use_tls = $vartls" >> /etc/postfix/main.cf
 			
 		fi
 		# Checking for password hash entry
@@ -154,14 +156,16 @@ show_menu(){
 			echo "- Password hashe looks setted-up"
 		else
 			echo "- Adding password hash entry"
-			echo "smtp_sasl_password_maps = hash:/etc/postfix/sasl_passwd" >> /etc/postfix/main.cf
+			postconf smtp_sasl_password_maps=hash:/etc/postfix/sasl_passwd
+			#echo "smtp_sasl_password_maps = hash:/etc/postfix/sasl_passwd" >> /etc/postfix/main.cf
 		fi
 		#checking for certificate
 		if grep "smtp_tls_CAfile" /etc/postfix/main.cf
 			then
 			echo "- TLS CA File looks setted-up"
 			else
-			echo "smtp_tls_CAfile = /etc/ssl/certs/ca-certificates.crt" >> /etc/postfix/main.cf
+			postconf smtp_tls_CAfile=/etc/ssl/certs/ca-certificates.crt
+			#echo "smtp_tls_CAfile = /etc/ssl/certs/ca-certificates.crt" >> /etc/postfix/main.cf
 		fi
 		# Adding sasl security options
 	    # eliminates default security options which are imcompatible with gmail
@@ -169,19 +173,22 @@ show_menu(){
 			then
 			echo "- Google smtp_sasl_security_options looks setted-up"
 			else
-			echo "smtp_sasl_security_options = noanonymous" >> /etc/postfix/main.cf
+			postconf smtp_sasl_security_options=noanonymous
+			#echo "smtp_sasl_security_options = noanonymous" >> /etc/postfix/main.cf
 		fi
 		if grep "smtp_sasl_auth_enable" /etc/postfix/main.cf
 			then
 			echo "- Authentification looks enable - Good"
 			else
-			echo "smtp_sasl_auth_enable = yes" >> /etc/postfix/main.cf
+			postconf smtp_sasl_auth_enable=yes
+			#echo "smtp_sasl_auth_enable = yes" >> /etc/postfix/main.cf
 		fi 
 		if grep "sender_canonical_maps" /etc/postfix/main.cf
 			then
 			echo "- Canonical entry found - Good"
 			else
-			echo "sender_canonical_maps = hash:/etc/postfix/canonical" >> /etc/postfix/main.cf
+			postconf sender_canonical_maps=hash:/etc/postfix/canonical
+			#echo "sender_canonical_maps = hash:/etc/postfix/canonical" >> /etc/postfix/main.cf
 		fi 
 		
 		echo "- Encrypting password and canonical entry"
@@ -228,18 +235,23 @@ show_menu(){
 	        4) clear;
 			if grep "SMTPUTF8 is required" "/var/log/mail.log"
 			then
-			echo "- Error may have been founds "
+			echo "- Errors may have been found "
 			read -p "Looks like there's a error as SMTPUTF8 was required but not supported: try to fix? y = yes / anything=no: " -n 1 -r
-			if [[ $REPLY =~ ^[Yy]$ ]]
-			then
-			postconf smtputf8_enable=no
-			postfix reload
-			echo " "
-			echo "setting "smtputf8_enable=no" to correct "SMTPUTF8 was required but not supported""
-			else
-			echo "- No configured error found :-)"
-		fi
-		fi
+				if [[ $REPLY =~ ^[Yy]$ ]]
+				then
+					if grep "smtputf8_enable=no" /etc/postfix/main.cf
+					then
+					echo "- Fix looks already applied!"
+					else
+					echo " "
+					echo "- Setting "smtputf8_enable=no" to correct "SMTPUTF8 was required but not supported""
+					postconf smtputf8_enable=no
+					postfix reload
+				  fi 
+				fi
+		        else
+			echo "- No configured error found - nothing to do!"
+			fi
 	  show_menu;	
       ;;
       0) clear;
