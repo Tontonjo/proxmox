@@ -213,7 +213,7 @@ show_menu(){
 			read -p "Looks like there's a error as SMTPUTF8 was required but not supported: try to fix? y = yes / anything=no: " -n 1 -r
 				if [[ $REPLY =~ ^[Yy]$ ]]
 				then
-					if grep "smtputf8_enable=no" /etc/postfix/main.cf
+					if grep "smtputf8_enable = no" /etc/postfix/main.cf
 					then
 					echo "- Fix looks already applied!"
 					else
