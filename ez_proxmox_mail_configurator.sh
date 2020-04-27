@@ -92,7 +92,7 @@ show_menu(){
     else
       case $opt in
       1) clear;
-			echo "Destination mail address: "
+			echo "Destination mail address (root alias): "
 			read 'varrootmail'
 			echo "What is the mail server hostname? (smtp.gmail.com): "
 			read 'varmailserver'
