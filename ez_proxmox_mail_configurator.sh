@@ -92,13 +92,13 @@ show_menu(){
     else
       case $opt in
       1) clear;
-			echo "Destination mail address (root alias): "
+			echo "System destination mail address (user@domain.tld) (root alias): "
 			read 'varrootmail'
 			echo "What is the mail server hostname? (smtp.gmail.com): "
 			read 'varmailserver'
 			echo "What is the mail server port? (Usually 587 - can be 25 (no tls)): "
 			read 'varmailport'
-			echo "What is the AUTHENTIFICATION USERNAME? (xxx@xxxx.com or username): "
+			echo "What is the AUTHENTIFICATION USERNAME? (user@domain.tld or username): "
 			read 'varmailusername'
 			echo "What is the AUTHENTIFICATION PASSWORD?: "
 			read 'varmailpassword'
