@@ -25,6 +25,7 @@
 # https://linuxscriptshub.com/configure-smtp-with-gmail-using-postfix/
 # https://suoption_pickedpport.google.com/accounts/answer/6010255
 # https://www.howtoforge.com/community/threads/solved-problem-with-outgoing-mail-from-server.53920/
+# http://mhawthorne.net/posts/2011-postfix-configuring-gmail-as-relay/
 
 # Files:
 # "/etc/aliases"
