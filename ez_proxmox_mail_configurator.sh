@@ -204,10 +204,12 @@ show_menu(){
 		echo "- When asked for CC - press enter again"
 		echo "  --------- Enter mail body ----------------"
 		mail -s "$varsubject" "$vardestaddress"
+		echo "- Email should have been sent - If none received, you may want to check for errors in menu 3"
 	  
 	  show_menu;	
       ;;
 	        3) clear;
+			echo "- Checking for known errors that may be found in logs"
 			if grep "SMTPUTF8 is required" "/var/log/mail.log"
 			then
 			echo "- Errors may have been found "
