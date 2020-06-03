@@ -1,1 +1,19 @@
+# Tonton Jo - 2020
+# Join me on Youtube: https://www.youtube.com/channel/UCnED3K6K5FDUp-x_8rwpsZw
 
+# You'll find there some usefull commands used for proxmox
+
+# ---------------------- Disk management ------------------------------
+# Find a disque with ID:
+ls /dev/disk/by-id/ -la
+ls /dev/disk/by-id/ -la | grep serial
+
+# list disk informations: Replace X
+lsblk -o name,model,serial,uuid /dev/sdX
+
+# Replace Zpool Drive:
+zpool replace pool olddrive newdrive
+
+
+# -------------------------- TOOLS --------------------------------------
+# Ioping - usefull to simulate drive activity and therefore locating it.
