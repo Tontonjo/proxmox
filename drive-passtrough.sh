@@ -8,6 +8,12 @@
 varversion=1.0
 #V1.0: Initial Release - proof of concept
 
+
+# USAGE
+# You can run this scritp directly using:
+# wget https://raw.githubusercontent.com/Tontonjo/proxmox/master/ez_proxmox_mail_configurator.sh
+# bash ez_proxmox_mail_configurator.sh
+
 echo "----------------------------------------------------------------"
 echo "Tonton Jo - 2020"
 echo "Proxmox drive passtrough helper"
