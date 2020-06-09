@@ -26,4 +26,4 @@ read 'vardriveid'
 echo "Drive to pass trough? (/dev/sda - /dev/disk/by-id/yyyy): "
 read 'vardrive'
 
-qm set $varvmid -$driveid $vardrive
+qm set $varvmid -$vardriveid $vardrive
