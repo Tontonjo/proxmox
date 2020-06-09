@@ -11,8 +11,7 @@ varversion=1.0
 
 # USAGE
 # You can run this scritp directly using:
-# wget https://raw.githubusercontent.com/Tontonjo/proxmox/master/drive-passtrough.sh
-# bash ez_proxmox_mail_configurator.sh
+# wget https://raw.githubusercontent.com/Tontonjo/proxmox/master/drive-passtrough.sh | bash
 
 echo "----------------------------------------------------------------"
 echo "Tonton Jo - 2020"
