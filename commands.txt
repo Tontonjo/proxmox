@@ -3,6 +3,14 @@
 
 # You'll find there some usefull commands used for proxmox
 
+# ---------------------- VM Management --------------------------------
+# Disk passtrough
+qm set VMID -scsi0 /dev/sdX
+
+# Appliance Import
+qm importdisk VMID pathtoappliance.ova local-lvm
+
+
 # ---------------------- Disk management ------------------------------
 # Find a disque with ID:
 ls /dev/disk/by-id/ -la
