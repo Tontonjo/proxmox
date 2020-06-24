@@ -4,6 +4,7 @@
 # You'll find there some usefull commands used for proxmox
 
 # ---------------------- VM Management --------------------------------
+
 # Disk passtrough
 qm set VMID -scsi0 /dev/sdX
 
@@ -12,16 +13,25 @@ qm importdisk VMID pathtoappliance.ova local-lvm
 
 
 # ---------------------- Disk management ------------------------------
-# Find a disque with ID:
+
+# Find a disc with ID:
 ls /dev/disk/by-id/ -la
-ls /dev/disk/by-id/ -la | grep serial
+ls /dev/disk/by-id/ -la | grep "serial"
 
 # list disk informations: Replace X
 lsblk -o name,model,serial,uuid /dev/sdX
 
+# ----------------------Zpool Management ------------------------------
+
 # Replace Zpool Drive:
-zpool replace pool olddrive newdrive
+zpool replace pool /old/drive /new/drive
+
+# mark a pool a OK - Clear errors on pool and drives
+zpool clear "poolname"
 
 
 # -------------------------- TOOLS --------------------------------------
+
 # Ioping - usefull to simulate drive activity and therefore locating it.
+# s-tui - Graphical interface to monitor system performances
+# stress - install it with s-tui to be able to stress your system - dont use in prod
