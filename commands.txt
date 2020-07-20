@@ -29,6 +29,9 @@ zpool replace pool /old/drive /new/drive
 # mark a pool a OK - Clear errors on pool and drives
 zpool clear "poolname"
 
+# ---------------------- MONITORING ----------------------------------
+# live disk IO
+watch -n 1 "zpool iostat -v"
 
 # -------------------------- TOOLS --------------------------------------
 
