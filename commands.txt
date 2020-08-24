@@ -22,6 +22,8 @@ ls /dev/disk/by-id/ -la | grep "serial"
 lsblk -o name,model,serial,uuid /dev/sdX
 
 # ----------------------Zpool Management ------------------------------
+# Find ARC RAM usage for Zpool:
+awk '/^size/ { print $1 " " $3 / 1048576 }' < /proc/spl/kstat/zfs/arcstats
 
 # Replace Zpool Drive:
 zpool replace pool /old/drive /new/drive
