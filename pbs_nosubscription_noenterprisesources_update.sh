@@ -10,9 +10,10 @@
 # You can run this scritp directly using:
 # wget -O - https://raw.githubusercontent.com/Tontonjo/proxmox/master/pbs_nosubscription_noenterprisesources_update.sh | bash
 
-varversion=1.2
+varversion=1.3
 # V1.0: Initial Release
 # V1.2: fix repository names
+# V1.3: Correct subscription removal
 
 # Sources:
 # https://pve.proxmox.com/wiki/Package_Repositories
@@ -36,7 +37,7 @@ distribution=$(. /etc/*-release;echo $VERSION_CODENAME)
 #2: Remove Subscription:
 
 echo "- Removing No Valid Subscription Message"
-sed -i.bak "s/data.status !== 'Active'/false/g" /usr/share/javascript/proxmox-widget-toolkit/proxmoxlib.js && systemctl restart proxmox-backup-proxy.service
+sed -i.bak "s/data.status !== 'active'/false/g" /usr/share/javascript/proxmox-widget-toolkit/proxmoxlib.js && systemctl restart proxmox-backup-proxy.service
 
 #3: Edit sources list:
 
