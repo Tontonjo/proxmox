@@ -8,10 +8,11 @@
 
 # USAGE
 # You can run this scritp directly using:
-# wget -O - https://raw.githubusercontent.com/Tontonjo/proxmox/master/pve_nosubscription_noenterprisesources_update.sh | bash
+# wget -O - https://raw.githubusercontent.com/Tontonjo/proxmox/master/pbs_nosubscription_noenterprisesources_update.sh | bash
 
-varversion=1.1
+varversion=1.2
 # V1.0: Initial Release
+# V1.2: fix repository names
 
 # Sources:
 # https://pve.proxmox.com/wiki/Package_Repositories
@@ -21,13 +22,6 @@ varversion=1.1
 # I assume you know what you are doing have a backup and have a default configuration.
 
 # If you want to manually enter commands below in order: enter thoses without "#" :-)
-
-# distribution=$(. /etc/*-release;echo $VERSION_CODENAME)
-# sed -i.bak "s/data.status !== 'Active'/false/g" /usr/share/javascript/proxmox-widget-toolkit/proxmoxlib.js && systemctl restart pveproxy.service
-# sed -i "\$adeb http://download.proxmox.com/debian/pve $distribution pve-no-subscription" /etc/apt/sources.list
-# sed -i 's/^/#/' /etc/apt/sources.list.d/pve-enterprise.list
-# apt-get -y update
-# apt-get -y upgrade
 
 
 echo "----------------------------------------------------------------"
@@ -47,21 +41,21 @@ sed -i.bak "s/data.status !== 'Active'/false/g" /usr/share/javascript/proxmox-wi
 #3: Edit sources list:
 
 echo "- Checking Sources list"
-if grep -Fxq "deb http://download.proxmox.com/debian/pve $distribution pve-no-subscription" /etc/apt/sources.list
+if grep -Fxq "deb http://download.proxmox.com/debian/pbs $distribution pbs-no-subscription" /etc/apt/sources.list
 then
     echo "- Source looks alredy configured - Skipping"
 else
     echo "- Adding new entry to sources.list"
-    sed -i "\$adeb http://download.proxmox.com/debian/pve $distribution pve-no-subscription" /etc/apt/sources.list
+    sed -i "\$adeb http://download.proxmox.com/debian/pbs $distribution pbs-no-subscription" /etc/apt/sources.list
 fi
 
 echo "- Checking Enterprise Source list"
-if grep -Fxq "#deb https://enterprise.proxmox.com/debian/pve $distribution pve-enterprise" /etc/apt/sources.list.d/pve-enterprise.list
+if grep -Fxq "#deb https://enterprise.proxmox.com/debian/pbs $distribution pbs-enterprise" /etc/apt/sources.list.d/pbs-enterprise.list
 then
     echo "- Entreprise repo looks already commented - Skipping"
 else
    echo "- Hiding Enterprise sources list"
-   sed -i 's/^/#/' /etc/apt/sources.list.d/pve-enterprise.list
+   sed -i 's/^/#/' /etc/apt/sources.list.d/pbs-enterprise.list
 fi
 
 
