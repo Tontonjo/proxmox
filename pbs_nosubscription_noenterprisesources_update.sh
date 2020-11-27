@@ -37,7 +37,8 @@ distribution=$(. /etc/*-release;echo $VERSION_CODENAME)
 #2: Remove Subscription:
 
 echo "- Removing No Valid Subscription Message"
-sed -i.bak "s/data.status !== 'active'/false/g" /usr/share/javascript/proxmox-widget-toolkit/proxmoxlib.js && systemctl restart proxmox-backup-proxy.service
+sed -Ezi.bak "s/(Ext.Msg.show\(\{\s+title: gettext\('No valid sub)/void\(\{ \/\/\1/g" /usr/share/javascript/proxmox-widget-toolkit/proxmoxlib.js && systemctl restart proxmox-backup-proxy.service
+
 
 #3: Edit sources list:
 
