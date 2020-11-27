@@ -18,6 +18,7 @@ varversion=1.1
 # https://pve.proxmox.com/wiki/Package_Repositories
 # https://www.sysorchestra.com/remove-proxmox-5-3-no-valid-subscription-message/
 # https://www.svennd.be/proxmox-ve-5-0-fix-updates-upgrades/
+# https://johnscs.com/remove-proxmox51-subscription-notice/
 
 # I assume you know what you are doing have a backup and have a default configuration.
 
@@ -43,7 +44,7 @@ distribution=$(. /etc/*-release;echo $VERSION_CODENAME)
 #2: Remove Subscription:
 
 echo "- Removing No Valid Subscription Message"
-sed -i.bak "s/data.status !== 'Active'/false/g" /usr/share/javascript/proxmox-widget-toolkit/proxmoxlib.js && systemctl restart pveproxy.service
+sed -Ezi.bak "s/(Ext.Msg.show\(\{\s+title: gettext\('No valid sub)/void\(\{ \/\/\1/g" /usr/share/javascript/proxmox-widget-toolkit/proxmoxlib.js && systemctl restart pveproxy.service
 
 #3: Edit sources list:
 
