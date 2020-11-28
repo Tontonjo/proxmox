@@ -15,7 +15,7 @@ varversion=1.5
 # V1.2: fix repository names
 # V1.3: Correct subscription removal
 # V1.4: put license removal after update - makes more sense
-# V1.5: added dis-upgrade to avoid bicking things
+# V1.5: added dist-upgrade to avoid bricking things
 
 
 # Sources:
