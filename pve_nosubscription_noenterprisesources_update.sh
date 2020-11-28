@@ -15,6 +15,7 @@ varversion=1.3
 # V1.1: echo was writing source at end of last line - replaced with sed
 # V1.2: updated license removal command
 # V1.3: put license removal after update - makes more sense
+# V1.4: added dist-upgrade to avoid bricking things
 
 # Sources:
 # https://pve.proxmox.com/wiki/Package_Repositories
