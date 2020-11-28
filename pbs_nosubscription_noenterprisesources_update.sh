@@ -10,7 +10,7 @@
 # You can run this scritp directly using:
 # wget -O - https://raw.githubusercontent.com/Tontonjo/proxmox/master/pbs_nosubscription_noenterprisesources_update.sh | bash
 
-varversion=1.3
+varversion=1.4
 # V1.0: Initial Release
 # V1.2: fix repository names
 # V1.3: Correct subscription removal
