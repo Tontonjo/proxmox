@@ -69,6 +69,7 @@ fi
 echo "- Updating System"
 apt-get -y update
 apt-get -y upgrade
+apt-get -y dist-upgrade
 
 #4: Remove Subscription:
 echo "- Removing No Valid Subscription Message"
