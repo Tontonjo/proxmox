@@ -10,11 +10,13 @@
 # You can run this scritp directly using:
 # wget -O - https://raw.githubusercontent.com/Tontonjo/proxmox/master/pbs_nosubscription_noenterprisesources_update.sh | bash
 
-varversion=1.4
+varversion=1.5
 # V1.0: Initial Release
 # V1.2: fix repository names
 # V1.3: Correct subscription removal
 # V1.4: put license removal after update - makes more sense
+# V1.5: added dis-upgrade to avoid bicking things
+
 
 # Sources:
 # https://pve.proxmox.com/wiki/Package_Repositories
@@ -60,7 +62,7 @@ fi
 echo "- Updating System"
 apt-get -y update
 apt-get -y upgrade
-
+apt-get -y dist-upgrade
 
 #4: Remove Subscription:
 
