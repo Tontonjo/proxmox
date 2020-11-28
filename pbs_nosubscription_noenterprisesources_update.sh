@@ -14,6 +14,7 @@ varversion=1.3
 # V1.0: Initial Release
 # V1.2: fix repository names
 # V1.3: Correct subscription removal
+# V1.4: put license removal after update - makes more sense
 
 # Sources:
 # https://pve.proxmox.com/wiki/Package_Repositories
