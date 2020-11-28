@@ -34,13 +34,7 @@ echo "----------------------------------------------------------------"
 echo "- Defining distribution name for sources list"
 distribution=$(. /etc/*-release;echo $VERSION_CODENAME)
 
-#2: Remove Subscription:
-
-echo "- Removing No Valid Subscription Message"
-sed -Ezi.bak "s/(Ext.Msg.show\(\{\s+title: gettext\('No valid sub)/void\(\{ \/\/\1/g" /usr/share/javascript/proxmox-widget-toolkit/proxmoxlib.js && systemctl restart proxmox-backup-proxy.service
-
-
-#3: Edit sources list:
+#2: Edit sources list:
 
 echo "- Checking Sources list"
 if grep -Fxq "deb http://download.proxmox.com/debian/pbs $distribution pbs-no-subscription" /etc/apt/sources.list
@@ -61,7 +55,14 @@ else
 fi
 
 
-#4: update:
+#3: update:
 echo "- Updating System"
 apt-get -y update
 apt-get -y upgrade
+
+
+#4: Remove Subscription:
+
+echo "- Removing No Valid Subscription Message"
+sed -Ezi.bak "s/(Ext.Msg.show\(\{\s+title: gettext\('No valid sub)/void\(\{ \/\/\1/g" /usr/share/javascript/proxmox-widget-toolkit/proxmoxlib.js && systemctl restart proxmox-backup-proxy.service
+
