@@ -25,9 +25,6 @@ varversion=1.5
 
 # I assume you know what you are doing have a backup and have a default configuration.
 
-# If you want to manually enter commands below in order: enter thoses without "#" :-)
-
-
 echo "----------------------------------------------------------------"
 echo "Tonton Jo - 2020"
 echo "Proxmox subscription and sources inital setup V$varversion"
