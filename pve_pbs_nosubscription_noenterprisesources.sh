@@ -1,0 +1,91 @@
+#!/bin/bash
+
+# Tonton Jo - 2020
+# Join me on Youtube: https://www.youtube.com/c/tontonjo
+
+# Script for initial proxomox subscription and sources list settings
+# https://www.youtube.com/watch?v=X-a_LGKFIPg
+
+# USAGE
+# You can run this scritp directly using:
+# wget -O - https://raw.githubusercontent.com/Tontonjo/proxmox/master/pve_pbs_nosubscription_noenterprisesources.sh | bash
+
+varversion=1.0
+# V1.0: Initial Release with support for both PVE and PBS
+
+# Sources:
+# https://pve.proxmox.com/wiki/Package_Repositories
+# https://www.sysorchestra.com/remove-proxmox-5-3-no-valid-subscription-message/
+# https://www.svennd.be/proxmox-ve-5-0-fix-updates-upgrades/
+
+# I assume you know what you are doing have a backup and have a default configuration.
+
+echo "----------------------------------------------------------------"
+echo "Tonton Jo - 2020"
+echo "Proxmox subscription and sources inital setup V$varversion"
+echo "----------------------------------------------------------------"
+
+# -----------------ENVIRONNEMENT VARIABLES----------------------
+# Hostname used to generate sensor name
+pve_log_folder=/var/log/pve/tasks/
+distribution=$(. /etc/*-release;echo $VERSION_CODENAME)
+# ---------------END OF ENVIRONNEMENT VARIABLES-----------------
+
+# Check if server is PBS or PVE using /var/log/pve/tasks/
+if [ -d "$pve_log_folder" ]; then
+  echo "- Server is a PVE host"
+#2: Edit sources list:
+  echo "- Checking Sources list"
+    if grep -Fxq "deb http://download.proxmox.com/debian/pve $distribution pve-no-subscription" /etc/apt/sources.list
+     then
+      echo "- Source looks alredy configured - Skipping"
+    else
+      echo "- Adding new entry to sources.list"
+      sed -i "\$adeb http://download.proxmox.com/debian/pve $distribution pve-no-subscription" /etc/apt/sources.list
+    fi
+  echo "- Checking Enterprise Source list"
+    if grep -Fxq "#deb https://enterprise.proxmox.com/debian/pve $distribution pve-enterprise" /etc/apt/sources.list.d/pve-enterprise.list
+    then
+     echo "- Entreprise repo looks already commented - Skipping"
+    else
+     echo "- Hiding Enterprise sources list"
+     sed -i 's/^/#/' /etc/apt/sources.list.d/pve-enterprise.list
+   fi
+else
+  echo "- Server is a PBS host"
+  echo "- Checking Sources list"
+    if grep -Fxq "deb http://download.proxmox.com/debian/pbs $distribution pbs-no-subscription" /etc/apt/sources.list
+    then
+      echo "- Source looks alredy configured - Skipping"
+    else
+     echo "- Adding new entry to sources.list"
+      sed -i "\$adeb http://download.proxmox.com/debian/pbs $distribution pbs-no-subscription" /etc/apt/sources.list
+    fi
+  echo "- Checking Enterprise Source list"
+    if grep -Fxq "#deb https://enterprise.proxmox.com/debian/pbs $distribution pbs-enterprise" /etc/apt/sources.list.d/pbs-enterprise.list
+      then
+      echo "- Entreprise repo looks already commented - Skipping"
+    else
+      echo "- Hiding Enterprise sources list"
+      sed -i 's/^/#/' /etc/apt/sources.list.d/pbs-enterprise.list
+    fi
+fi
+
+#3: update:
+echo "- Updating System"
+apt-get -y update
+apt-get -y upgrade
+apt-get -y dist-upgrade
+
+#4: Remove Subscription:
+
+if [ -d "$pve_log_folder" ]; then
+#4: Remove Subscription:
+echo "- Removing No Valid Subscription Message for PVE"
+sed -Ezi.bak "s/(Ext.Msg.show\(\{\s+title: gettext\('No valid sub)/void\(\{ \/\/\1/g" /usr/share/javascript/proxmox-widget-toolkit/proxmoxlib.js && systemctl restart pveproxy.service
+else 
+echo "- Removing No Valid Subscription Message for PBS"
+sed -Ezi.bak "s/(Ext.Msg.show\(\{\s+title: gettext\('No valid sub)/void\(\{ \/\/\1/g" /usr/share/javascript/proxmox-widget-toolkit/proxmoxlib.js && systemctl restart proxmox-backup-proxy.service
+fi
+
+
