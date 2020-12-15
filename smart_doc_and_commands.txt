@@ -16,3 +16,4 @@ Configuration pour programmation des self-tests:
 
 DEVICESCAN -d auto -n never -a -H -f -s (S/../../7/22|L/../01/./22) -m root -M exec /usr/share/smartmontools/smartd-runner
 
+service smartd restart
