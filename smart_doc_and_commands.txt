@@ -4,6 +4,9 @@ https://linux.die.net/man/5/smartd.conf
 Informations sur smartctl:
 https://linux.die.net/man/8/smartctl
 
+smartctl -a /dev/sdX
+smartctl -H /dev/sdX
+
 bits:
 1   2   4    8    16    32      64      128
 0   1   2    3     4    5       6        7
