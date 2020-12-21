@@ -25,44 +25,6 @@ varversion=1.4
 
 # I assume you know what you are doing have a backup and have a default configuration.
 
-echo "----------------------------------------------------------------"
-echo "Tonton Jo - 2020"
-echo "Proxmox subscription and sources inital setup V$varversion"
-echo "----------------------------------------------------------------"
-#1: Defining distribution name:
+# Redirect to new script version - keeping this cause the link was shared.
 
-echo "- Defining distribution name for sources list"
-distribution=$(. /etc/*-release;echo $VERSION_CODENAME)
-
-
-#2: Edit sources list:
-
-echo "- Checking Sources list"
-if grep -Fxq "deb http://download.proxmox.com/debian/pve $distribution pve-no-subscription" /etc/apt/sources.list
-then
-    echo "- Source looks alredy configured - Skipping"
-else
-    echo "- Adding new entry to sources.list"
-    sed -i "\$adeb http://download.proxmox.com/debian/pve $distribution pve-no-subscription" /etc/apt/sources.list
-fi
-
-echo "- Checking Enterprise Source list"
-if grep -Fxq "#deb https://enterprise.proxmox.com/debian/pve $distribution pve-enterprise" /etc/apt/sources.list.d/pve-enterprise.list
-then
-    echo "- Entreprise repo looks already commented - Skipping"
-else
-   echo "- Hiding Enterprise sources list"
-   sed -i 's/^/#/' /etc/apt/sources.list.d/pve-enterprise.list
-fi
-
-
-#3: update:
-echo "- Updating System"
-apt-get -qq update
-apt-get -qq upgrade
-apt-get -qq dist-upgrade
-
-#4: Remove Subscription:
-echo "- Removing No Valid Subscription Message"
-sed -Ezi.bak "s/(Ext.Msg.show\(\{\s+title: gettext\('No valid sub)/void\(\{ \/\/\1/g" /usr/share/javascript/proxmox-widget-toolkit/proxmoxlib.js && systemctl restart pveproxy.service
-
+wget -O - https://raw.githubusercontent.com/Tontonjo/proxmox/master/pve_pbs_nosubscription_noenterprisesources.sh | bash
