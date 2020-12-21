@@ -39,17 +39,17 @@ if [ -d "$pve_log_folder" ]; then
   echo "- Checking Sources list"
     if grep -Fxq "deb http://download.proxmox.com/debian/pve $distribution pve-no-subscription" /etc/apt/sources.list
      then
-      echo "- Source looks alredy configured - Skipping"
+      echo "-- Source looks alredy configured - Skipping"
     else
-      echo "- Adding new entry to sources.list"
+      echo "-- Adding new entry to sources.list"
       sed -i "\$adeb http://download.proxmox.com/debian/pve $distribution pve-no-subscription" /etc/apt/sources.list
     fi
   echo "- Checking Enterprise Source list"
     if grep -Fxq "#deb https://enterprise.proxmox.com/debian/pve $distribution pve-enterprise" /etc/apt/sources.list.d/pve-enterprise.list
     then
-     echo "- Entreprise repo looks already commented - Skipping"
+     echo "-- Entreprise repo looks already commented - Skipping"
     else
-     echo "- Hiding Enterprise sources list"
+     echo "-- Hiding Enterprise sources list"
      sed -i 's/^/#/' /etc/apt/sources.list.d/pve-enterprise.list
    fi
 else
@@ -57,17 +57,17 @@ else
   echo "- Checking Sources list"
     if grep -Fxq "deb http://download.proxmox.com/debian/pbs $distribution pbs-no-subscription" /etc/apt/sources.list
     then
-      echo "- Source looks alredy configured - Skipping"
+      echo "-- Source looks alredy configured - Skipping"
     else
-     echo "- Adding new entry to sources.list"
+     echo "-- Adding new entry to sources.list"
       sed -i "\$adeb http://download.proxmox.com/debian/pbs $distribution pbs-no-subscription" /etc/apt/sources.list
     fi
   echo "- Checking Enterprise Source list"
     if grep -Fxq "#deb https://enterprise.proxmox.com/debian/pbs $distribution pbs-enterprise" /etc/apt/sources.list.d/pbs-enterprise.list
       then
-      echo "- Entreprise repo looks already commented - Skipping"
+      echo "-- Entreprise repo looks already commented - Skipping"
     else
-      echo "- Hiding Enterprise sources list"
+      echo "-- Hiding Enterprise sources list"
       sed -i 's/^/#/' /etc/apt/sources.list.d/pbs-enterprise.list
     fi
 fi
