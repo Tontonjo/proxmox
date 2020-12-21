@@ -28,4 +28,8 @@ varversion=1.5
 
 # Redirect to new script version - keeping this cause the link was shared.
 
+echo "------------------------------------------------------------------------------------------------------------------------------"
+echo "- Redirecting to new script at https://github.com/Tontonjo/proxmox/blob/master/pve_pbs_nosubscription_noenterprisesources.sh"
+echo "------------------------------------------------------------------------------------------------------------------------------"
+
 wget -O - https://raw.githubusercontent.com/Tontonjo/proxmox/master/pve_pbs_nosubscription_noenterprisesources.sh | bash
