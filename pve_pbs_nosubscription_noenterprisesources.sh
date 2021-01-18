@@ -75,10 +75,7 @@ fi
 
 #3: update:
 echo "- Updating System"
-apt-get -qq update
-apt-get -qq upgrade
-apt-get -qq dist-upgrade
-
+apt-get update && apt-get upgrade && dist-upgrade -y -qq
 
 #4: Remove Subscription:
 
