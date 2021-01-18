@@ -1,6 +1,7 @@
 #!/bin/bash
 
-# Tonton Jo - 2020
+
+# Tonton Jo - 2021
 # Join me on Youtube: https://www.youtube.com/c/tontonjo
 
 # Script for initial proxomox subscription and sources list settings
