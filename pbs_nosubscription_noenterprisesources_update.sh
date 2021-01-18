@@ -8,7 +8,7 @@
 
 # USAGE
 # You can run this scritp directly using:
-# wget -O - https://raw.githubusercontent.com/Tontonjo/proxmox/master/pbs_nosubscription_noenterprisesources_update.sh | bash
+# wget -O - https://raw.githubusercontent.com/Tontonjo/proxmox/master/pve_pbs_nosubscription_noenterprisesources.sh | bash
 
 varversion=1.6
 # V1.0: Initial Release
