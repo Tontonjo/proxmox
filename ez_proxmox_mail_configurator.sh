@@ -1,7 +1,7 @@
 #!/bin/bash
 
-# Tonton Jo - 2020
-# Join me on Youtube: https://www.youtube.com/c/TontonJo
+# Tonton Jo - 2021
+# Join me on Youtube: https://www.youtube.com/c/tontonjo
 
 # Script for easy setup of Proxomox email settings.
 # Tested working with gmail and infomaniak mail servers using TLS
