@@ -84,7 +84,7 @@ apt-get update && apt-get upgrade && apt-get dist-upgrade -y -qq
 read -t 1 -p "- Waiting for 1 seconds only - if there's no output after this line, the subscription part may have been skipped - rerun script."
 
 #checking if file is already edited in order to not edit again.
-if grep -Ewqi "void({ //Ext.Msg.show({" $proxmoxlib; then
+if grep -Ewqi 'void({ //Ext.Msg.show({' $proxmoxlib; then
 echo "-- Subscription Message already removed - Skipping"
 else
 if [ -d "$pve_log_folder" ]; then
