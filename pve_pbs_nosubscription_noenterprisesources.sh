@@ -1,6 +1,5 @@
 #!/bin/bash
 
-
 # Tonton Jo - 2021
 # Join me on Youtube: https://www.youtube.com/c/tontonjo
 
@@ -11,7 +10,7 @@
 # You can run this scritp directly using:
 # wget -O - https://raw.githubusercontent.com/Tontonjo/proxmox/master/pve_pbs_nosubscription_noenterprisesources.sh | bash
 
-varversion=2.0
+varversion=2.1
 # V1.0: Initial Release with support for both PVE and PBS
 # V2.0: Old scripts points there now :-)
 # V2.1: Some corrections and enhancements in the subscription part
@@ -83,17 +82,18 @@ apt-get update && apt-get upgrade && apt-get dist-upgrade -y -qq
 # Sometimes the subscription is skipped, no idea why - make a pause to try to avoid this
 read -t 1 -p "- Waiting for 1 seconds only - if there's no output after this line, the subscription part may have been skipped - rerun script."
 
-#checking if file is already edited in order to not edit again.
-if grep -Ewqi 'void({ //Ext.Msg.show({' $proxmoxlib; then
+#checking if file is already edited in order to not edit again
+if grep -Ewqi "void" $proxmoxlib; then
+echo " "
 echo "-- Subscription Message already removed - Skipping"
 else
 if [ -d "$pve_log_folder" ]; then
+echo " "
 echo "- Removing No Valid Subscription Message for PVE"
 sed -Ezi.bak "s/(Ext.Msg.show\(\{\s+title: gettext\('No valid sub)/void\(\{ \/\/\1/g" $proxmoxlib && systemctl restart pveproxy.service
 else 
+echo " "
 echo "- Removing No Valid Subscription Message for PBS"
 sed -Ezi.bak "s/(Ext.Msg.show\(\{\s+title: gettext\('No valid sub)/void\(\{ \/\/\1/g" $proxmoxlib && systemctl restart proxmox-backup-proxy.service
 fi
 fi
-
-
