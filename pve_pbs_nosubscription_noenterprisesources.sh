@@ -86,11 +86,9 @@ if grep -Ewqi "void" $proxmoxlib; then
 echo "- Subscription Message already removed - Skipping"
 else
 if [ -d "$pve_log_folder" ]; then
-echo " "
 echo "- Removing No Valid Subscription Message for PVE"
 sed -Ezi.bak "s/(Ext.Msg.show\(\{\s+title: gettext\('No valid sub)/void\(\{ \/\/\1/g" $proxmoxlib && systemctl restart pveproxy.service
 else 
-echo " "
 echo "- Removing No Valid Subscription Message for PBS"
 sed -Ezi.bak "s/(Ext.Msg.show\(\{\s+title: gettext\('No valid sub)/void\(\{ \/\/\1/g" $proxmoxlib && systemctl restart proxmox-backup-proxy.service
 fi
