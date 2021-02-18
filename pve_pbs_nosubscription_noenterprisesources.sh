@@ -29,7 +29,8 @@ echo "----------------------------------------------------------------"
 
 # -----------------ENVIRONNEMENT VARIABLES----------------------
 # Hostname used to generate sensor name
-pve_log_folder=/var/log/pve/tasks/
+pve_log_folder="/var/log/pve/tasks/"
+proxmoxlib="/usr/share/javascript/proxmox-widget-toolkit/proxmoxlib.js"
 distribution=$(. /etc/*-release;echo $VERSION_CODENAME)
 # ---------------END OF ENVIRONNEMENT VARIABLES-----------------
 
@@ -78,14 +79,21 @@ echo "- Updating System"
 apt-get update && apt-get upgrade && apt-get dist-upgrade -y -qq
 
 #4: Remove Subscription:
+# Sometimes the subscription is skipped, no idea why - make a pause to try to avoid this
+read -t 1 -p "- Waiting for 1 seconds only - if there's no output after this line, the subscription part may have been skipped - rerun script."
 
+#checking if file is already edited in order to not edit again.
+if 
+grep -Ewqi "void({ //Ext.Msg.show({" $proxmoxlib
+echo "-- Subscription Message already removed - Skipping"
+else
 if [ -d "$pve_log_folder" ]; then
-#4: Remove Subscription:
 echo "- Removing No Valid Subscription Message for PVE"
-sed -Ezi.bak "s/(Ext.Msg.show\(\{\s+title: gettext\('No valid sub)/void\(\{ \/\/\1/g" /usr/share/javascript/proxmox-widget-toolkit/proxmoxlib.js && systemctl restart pveproxy.service
+sed -Ezi.bak "s/(Ext.Msg.show\(\{\s+title: gettext\('No valid sub)/void\(\{ \/\/\1/g" $proxmoxlib && systemctl restart pveproxy.service
 else 
 echo "- Removing No Valid Subscription Message for PBS"
-sed -Ezi.bak "s/(Ext.Msg.show\(\{\s+title: gettext\('No valid sub)/void\(\{ \/\/\1/g" /usr/share/javascript/proxmox-widget-toolkit/proxmoxlib.js && systemctl restart proxmox-backup-proxy.service
+sed -Ezi.bak "s/(Ext.Msg.show\(\{\s+title: gettext\('No valid sub)/void\(\{ \/\/\1/g" $proxmoxlib && systemctl restart proxmox-backup-proxy.service
+fi
 fi
 
 
