@@ -79,7 +79,6 @@ echo "- Updating System"
 apt-get update && apt-get upgrade && apt-get dist-upgrade -y -qq
 
 #4: Remove Subscription:
-read -t 2 -p "- Waiting 2 seconds before continuing"
 #checking if file is already edited in order to not edit again
 if grep -Ewqi "void" $proxmoxlib; then
 echo "- Subscription Message already removed - Skipping"
