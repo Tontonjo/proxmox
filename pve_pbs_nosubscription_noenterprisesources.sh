@@ -80,8 +80,7 @@ apt-get update && apt-get upgrade && apt-get dist-upgrade -y -qq
 
 #4: Remove Subscription:
 # Sometimes the subscription is skipped, no idea why - make a pause to try to avoid this
-read -t 1 -p "- Waiting for 1 seconds only - if there's no output after this line, the subscription part may have been skipped - rerun script."
-
+read -t 1 -p "- Removing Subscription Message - if there's no output after this line, the subscription part may have been skipped - rerun script."
 #checking if file is already edited in order to not edit again
 if grep -Ewqi "void" $proxmoxlib; then
 echo " "
