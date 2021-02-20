@@ -20,7 +20,6 @@ varversion=2.2
 # https://pve.proxmox.com/wiki/Package_Repositories
 # https://www.sysorchestra.com/remove-proxmox-5-3-no-valid-subscription-message/
 # https://www.svennd.be/proxmox-ve-5-0-fix-updates-upgrades/
-# https://peteris.rocks/blog/quiet-and-unattended-installation-with-apt-get/
 
 # I assume you know what you are doing, have a backup and have a default configuration.
 
@@ -77,12 +76,11 @@ else
 fi
 
 #3: update:
-# "-qq -o Dpkg::Use-Pty=0 " is a trick to silence DPKG forked by apt-get
-
 echo "- Updating System"
 apt-get update -y -qq
-apt-get -qq -o Dpkg::Use-Pty=0 upgrade -y
-apt-get -qq -o Dpkg::Use-Pty=0 dist-upgrade -y
+apt-get -qq upgrade -y
+apt-get -qq dist-upgrade -y
+
 #4: Remove Subscription:
 #checking if file is already edited in order to not edit again
 if grep -Ewqi "void" $proxmoxlib; then
