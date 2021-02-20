@@ -78,8 +78,8 @@ fi
 #3: update:
 echo "- Updating System"
 apt-get update -y -qq
-apt-get -qq upgrade -y
-apt-get -qq dist-upgrade -y
+apt-get upgrade -y -qq
+apt-get dist-upgrade -y -qq
 
 #4: Remove Subscription:
 #checking if file is already edited in order to not edit again
