@@ -20,6 +20,7 @@ varversion=2.2
 # https://pve.proxmox.com/wiki/Package_Repositories
 # https://www.sysorchestra.com/remove-proxmox-5-3-no-valid-subscription-message/
 # https://www.svennd.be/proxmox-ve-5-0-fix-updates-upgrades/
+# https://peteris.rocks/blog/quiet-and-unattended-installation-with-apt-get/
 
 # I assume you know what you are doing, have a backup and have a default configuration.
 
