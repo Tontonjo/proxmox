@@ -80,8 +80,7 @@ fi
 echo "- Updating System"
 apt-get update -y -qq
 apt-get -qq -o Dpkg::Use-Pty=0 upgrade -y
-apt-get -qq -o Dpkg::Use-Pty=0 dist-upgrade -y -qq
-
+apt-get -qq -o Dpkg::Use-Pty=0 dist-upgrade -y
 #4: Remove Subscription:
 #checking if file is already edited in order to not edit again
 if grep -Ewqi "void" $proxmoxlib; then
