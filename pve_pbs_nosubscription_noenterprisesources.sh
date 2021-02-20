@@ -75,10 +75,12 @@ else
 fi
 
 #3: update:
+# "-qq -o Dpkg::Use-Pty=0 " is a trick to silence DPKG forked by apt-get
+
 echo "- Updating System"
 apt-get update -y -qq
-apt-get upgrade -y -qq
-apt-get dist-upgrade -y -qq
+apt-get -qq -o Dpkg::Use-Pty=0 upgrade -y
+apt-get -qq -o Dpkg::Use-Pty=0 dist-upgrade -y -qq
 
 #4: Remove Subscription:
 #checking if file is already edited in order to not edit again
