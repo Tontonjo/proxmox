@@ -31,6 +31,12 @@ zpool replace pool /old/drive /new/drive
 # mark a pool a OK - Clear errors on pool and drives
 zpool clear "poolname"
 
+# Get Zpool version:
+zpool --version
+
+# ugrade a zpool:
+zpool upgrade "poolname"
+
 # ---------------------- MONITORING ----------------------------------
 # live disk IO
 watch -n 1 "zpool iostat -v"
