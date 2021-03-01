@@ -74,7 +74,7 @@ show_menu(){
     ENTER_LINE=`echo "\033[33m"`
     echo -e "${MENU}**************************** EZ PROXMOX MAIL CONFIGURATOR *********************************${NORMAL}"
     echo -e "${MENU}*************************** Tonton Jo - 2021 - Version $varversion ********************************${NORMAL}"
-    echo -e "${MENU}****************************** https://www.youtube.com/c/tontonjo ******************************${NORMAL}"
+    echo -e "${MENU}***************************** https://www.youtube.com/c/tontonjo ******************************${NORMAL}"
     echo " "
     echo -e "${MENU}**${NUMBER} 1)${MENU} Configure ${NORMAL}"
     echo -e "${MENU}**${NUMBER} 2)${MENU} Test ${NORMAL}"
