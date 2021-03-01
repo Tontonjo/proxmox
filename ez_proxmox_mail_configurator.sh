@@ -4,6 +4,7 @@
 # Join me on Youtube: https://www.youtube.com/c/tontonjo
 
 # Script for easy setup of Proxomox email settings.
+# This should actually work for any postmap configurations indeed
 # Tested working with gmail and infomaniak mail servers using TLS
 
 # DISCLAIMER
