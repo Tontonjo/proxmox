@@ -73,8 +73,8 @@ show_menu(){
     RED_TEXT=`echo "\033[31m"`
     ENTER_LINE=`echo "\033[33m"`
     echo -e "${MENU}**************************** EZ PROXMOX MAIL CONFIGURATOR *********************************${NORMAL}"
-    echo -e "${MENU}*************************** Tonton Jo - 2020 - Version $varversion ********************************${NORMAL}"
-    echo -e "${MENU}**************** https://www.youtube.com/channel/UCnED3K6K5FDUp-x_8rwpsZw ******************${NORMAL}"
+    echo -e "${MENU}*************************** Tonton Jo - 2021 - Version $varversion ********************************${NORMAL}"
+    echo -e "${MENU}****************************** https://www.youtube.com/c/tontonjo ******************************${NORMAL}"
     echo " "
     echo -e "${MENU}**${NUMBER} 1)${MENU} Configure ${NORMAL}"
     echo -e "${MENU}**${NUMBER} 2)${MENU} Test ${NORMAL}"
@@ -149,7 +149,7 @@ show_menu(){
 		# Checking for password hash entry
 			if grep "smtp_sasl_password_maps" /etc/postfix/main.cf
 			then
-			echo "- Password hashe looks setted-up"
+			echo "- Password hash already setted-up"
 		else
 			echo "- Adding password hash entry"
 			postconf smtp_sasl_password_maps=hash:/etc/postfix/sasl_passwd
@@ -165,19 +165,19 @@ show_menu(){
 	    # eliminates default security options which are imcompatible with gmail
 		if grep "smtp_sasl_security_options" /etc/postfix/main.cf
 			then
-			echo "- Google smtp_sasl_security_options looks setted-up"
+			echo "- Google smtp_sasl_security_options setted-up"
 			else
 			postconf smtp_sasl_security_options=noanonymous
 		fi
 		if grep "smtp_sasl_auth_enable" /etc/postfix/main.cf
 			then
-			echo "- Authentification looks enable - Good"
+			echo "- Authentification already enabled"
 			else
 			postconf smtp_sasl_auth_enable=yes
 		fi 
 		if grep "sender_canonical_maps" /etc/postfix/main.cf
 			then
-			echo "- Canonical entry found - Good"
+			echo "- Canonical entry already existing"
 			else
 			postconf sender_canonical_maps=hash:/etc/postfix/canonical
 		fi 
