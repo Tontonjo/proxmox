@@ -1,8 +1,8 @@
 # proxmox
 
 # Tonton Jo - 2021
-# Join me on Youtube: https://www.youtube.com/c/tontonjo
-# If you find this usefull, please think about a sub to support :-)
+Join me on Youtube: https://www.youtube.com/c/tontonjo
+If you find this usefull, please think about a sub to support :-)
 
 This repository contains somes scripts and tips for Proxmox hypervisor and backup server
 
