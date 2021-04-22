@@ -21,6 +21,9 @@ ls /dev/disk/by-id/ -la | grep "serial"
 # list disk informations: Replace X
 lsblk -o name,model,serial,uuid /dev/sdX
 
+# Read actual partition status after change
+hdparm -z /dev/sdX
+
 # ----------------------Zpool Management ------------------------------
 # Find ARC RAM usage for Zpool:
 awk '/^size/ { print $1 " " $3 / 1048576 }' < /proc/spl/kstat/zfs/arcstats
