@@ -7,7 +7,7 @@
 # https://www.youtube.com/watch?v=X-a_LGKFIPg
 
 # USAGE
-# You can run this scritp directly using:
+# You can run this script directly using:
 # wget -q -O - https://raw.githubusercontent.com/Tontonjo/proxmox/master/pve_pbs_nosubscription_noenterprisesources.sh | bash
 
 varversion=2.2
