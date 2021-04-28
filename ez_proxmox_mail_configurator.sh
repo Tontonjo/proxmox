@@ -15,7 +15,7 @@
 
 # USAGE
 # You can run this scritp directly using:
-# wget https://raw.githubusercontent.com/Tontonjo/proxmox/master/ez_proxmox_mail_configurator.sh
+# wget -q https://raw.githubusercontent.com/Tontonjo/proxmox/master/ez_proxmox_mail_configurator.sh
 # bash ez_proxmox_mail_configurator.sh
 
 # GMAIL: you need to allow less secure applications: 
@@ -35,7 +35,7 @@
 # Logs:
 # "/var/log/mail.*"
 
-varversion=1.6
+varversion=1.7
 #V1.0: Initial Release - proof of concept
 #V1.1: Small corrections
 #V1.2: Add sender address ask if same as auth mail, if so use it, else ask for value
@@ -43,6 +43,7 @@ varversion=1.6
 #V1.4: Removing useless echo and canonical backup
 #V1.5: Add menu to check logs for known errors - add error "SMTPUTF8 was required" and corrections
 #V1.6: Change sed for postmap command / swap restore and fix menus
+#V1.7: add test and resolution for connexion error due to ipv6 resolution on ipv4 network
 
 if [ $(dpkg-query -W -f='${Status}' libsasl2-modules 2>/dev/null | grep -c "ok installed") -eq 0 ];
 then
@@ -79,7 +80,7 @@ show_menu(){
     echo " "
     echo -e "${MENU}**${NUMBER} 1)${MENU} Configure ${NORMAL}"
     echo -e "${MENU}**${NUMBER} 2)${MENU} Test ${NORMAL}"
-    echo -e "${MENU}**${NUMBER} 3)${MENU} Check logs for error - attempt to correct ${NORMAL}"
+    echo -e "${MENU}**${NUMBER} 3)${MENU} Check logs for known errors - attempt to correct ${NORMAL}"
     echo -e "${MENU}**${NUMBER} 4)${MENU} Restore original conf ${NORMAL}"
     echo -e "${MENU}**${NUMBER} 0)${MENU} Exit ${NORMAL}"
     echo " "
@@ -227,7 +228,22 @@ show_menu(){
 					postfix reload
 				  fi 
 				fi
-		        else
+			elif grep "Network is unreachable" "/var/log/mail.log"
+			then
+				read -p "Are you on IPv4 AND your host can resolve and access public adresses? y = yes / anything=no: " -n 1 -r
+				if [[ $REPLY =~ ^[Yy]$ ]]
+				then
+					if grep "inet_protocols = ipv4" /etc/postfix/main.cf
+					then
+					echo "- Fix looks already applied!"
+					else
+					echo " "
+					echo "- Setting "inet_protocols = ipv4 " to correct ""Network is unreachable" caused by ipv6 resolution""
+					postconf inet_protocols=ipv4
+					postfix reload
+					fi
+				fi	
+		    else
 			echo "- No configured error found - nothing to do!"
 			fi
 	  show_menu;	
