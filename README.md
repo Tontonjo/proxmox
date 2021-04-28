@@ -11,11 +11,15 @@ https://www.youtube.com/playlist?list=PLU73OWQhDzsTfsnczSJWENIpZn1CNMzNP
 
 # pve_pbs_nosubscription_noenterprisesources.sh
 Set no enterprise sources
+
 Disable no subscription message
+
 full upgrade server
 
 # USAGE
+
 You can run this script directly using:
+
 wget -q -O - https://raw.githubusercontent.com/Tontonjo/proxmox/master/pve_pbs_nosubscription_noenterprisesources.sh | bash
 
 # ez_proxmox_mail_configurator.sh
@@ -23,5 +27,7 @@ Helps you to enable email notifications on your Proxmox VE server but can be use
 
 # USAGE
 You can run this scritp directly using:
+
 wget -q https://raw.githubusercontent.com/Tontonjo/proxmox/master/ez_proxmox_mail_configurator.sh
+
 bash ez_proxmox_mail_configurator.sh
