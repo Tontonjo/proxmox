@@ -25,6 +25,7 @@ Read actual partition status after change
 hdparm -z /dev/sdX
 
 ----------------------Zpool Management ------------------------------
+
 Find ARC RAM usage for Zpool:
 awk '/^size/ { print $1 " " $3 / 1048576 }' < /proc/spl/kstat/zfs/arcstats
 
@@ -41,6 +42,7 @@ ugrade a zpool:
 zpool upgrade "poolname"
 
 ---------------------- MONITORING ----------------------------------
+
 live disk IO
 watch -n 1 "zpool iostat -v"
 
