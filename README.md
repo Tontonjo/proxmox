@@ -3,7 +3,8 @@
 # Tonton Jo - 2021
 Join me on Youtube: https://www.youtube.com/c/tontonjo
 
-If you find this usefull, please think about a sub to support :-)
+If you find this usefull, please think about [Buying me a coffee](https://www.buymeacoffee.com/tontonjo)
+and to [Subscribe to my youtube channel](www.youtube.com/channel/UCnED3K6K5FDUp-x_8rwpsZw?sub_confirmation=1)
 
 This repository contains somes scripts and tips for Proxmox hypervisor and backup server
 
