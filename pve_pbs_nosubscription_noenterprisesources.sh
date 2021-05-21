@@ -29,7 +29,6 @@ echo "Proxmox subscription and sources inital setup V$version"
 echo "----------------------------------------------------------------"
 
 # -----------------ENVIRONNEMENT VARIABLES----------------------
-# Hostname used to generate sensor name
 pve_log_folder="/var/log/pve/tasks/"
 proxmoxlib="/usr/share/javascript/proxmox-widget-toolkit/proxmoxlib.js"
 distribution=$(. /etc/*-release;echo $VERSION_CODENAME)
