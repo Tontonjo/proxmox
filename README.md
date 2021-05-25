@@ -8,12 +8,12 @@ and to [Subscribe to my youtube channel](http://youtube.com/channel/UCnED3K6K5FD
 
 This repository contains somes scripts and tips for Proxmox hypervisor and backup server
 
-Find here [more of my videos about proxmox](https://www.youtube.com/playlist?list=PLU73OWQhDzsTfsnczSJWENIpZn1CNMzNP)
+Find here [more of my videos about proxmox](https://i.ibb.co/VY57ty3/Screenshot-2021-05-25-094719.png)
 
 
 ### pve_pbs_nosubscription_noenterprisesources.sh
 Set no enterprise sources
-
+![Script](https://i.ibb.co/RPSBf0P/Screenshot-2020-09-18-104948.png)
 Disable no subscription message
 
 full upgrade server
