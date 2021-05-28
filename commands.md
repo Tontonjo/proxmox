@@ -3,7 +3,7 @@
 
 You'll find there some usefull commands used for proxmox
 
-------------------------- Proxmox -----------------------------------  
+## Proxmox
 
 ### Stop all services:  
 for i in pve-cluster pvedaemon vz qemu-server pveproxy pve-cluster; do systemctl stop $i ; done
