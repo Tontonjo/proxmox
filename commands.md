@@ -8,7 +8,7 @@ You'll find there some usefull commands used for proxmox
 ### Stop all services:  
 for i in pve-cluster pvedaemon vz qemu-server pveproxy pve-cluster; do systemctl stop $i ; done
 
----------------------- VM Management --------------------------------
+## VM Management
 
 ### Disk passtrough
 
@@ -19,8 +19,7 @@ Appliance Import
 qm importdisk VMID pathtoappliance.ova local-lvm
 
 
----------------------- Disk management ------------------------------
-
+## Disk Management
 
 ### Find a disc with ID:
 
@@ -38,7 +37,7 @@ lsblk -o name,model,serial,uuid /dev/sdX
 
 hdparm -z /dev/sdX
 
-----------------------Zpool Management ------------------------------
+## Zpool Management  
 
 
 ### Find ARC RAM usage for Zpool:
@@ -65,13 +64,13 @@ zpool --version
 
 zpool upgrade "poolname"
 
----------------------- MONITORING ----------------------------------
+## Monitoring
 
 ### live disk IO
 
 watch -n 1 "zpool iostat -v"
 
--------------------------- TOOLS --------------------------------------
+## Tools
 
 Ioping - usefull to simulate drive activity and therefore locating it.
 
