@@ -7,7 +7,8 @@ You'll find there some usefull commands used for proxmox
 
 ### Stop all services:  
 ```shell
-for i in pve-cluster pvedaemon vz qemu-server pveproxy pve-cluster; do systemctl stop $i ; done```
+for i in pve-cluster pvedaemon vz qemu-server pveproxy pve-cluster; do systemctl stop $i ; done
+```
 
 ## VM Management
 
