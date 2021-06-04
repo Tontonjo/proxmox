@@ -21,15 +21,17 @@ full upgrade server
 #### USAGE
 
 You can run this script directly using:
-
+```shell
 wget -q -O - https://raw.githubusercontent.com/Tontonjo/proxmox/master/pve_pbs_nosubscription_noenterprisesources.sh | bash
-
+```
 ### ez_proxmox_mail_configurator.sh
 Helps you to enable email notifications on your Proxmox VE server but can be used for every postfix configuration
 
 #### USAGE
 You can run this scritp directly using:
-
+```shell
 wget -q https://raw.githubusercontent.com/Tontonjo/proxmox/master/ez_proxmox_mail_configurator.sh
-
+```
+```shell
 bash ez_proxmox_mail_configurator.sh
+```
