@@ -13,65 +13,66 @@ for i in pve-cluster pvedaemon vz qemu-server pveproxy pve-cluster; do systemctl
 ## VM Management
 
 ### Disk passtrough
-
+```shell
 qm set VMID -scsi0 /dev/sdX
-
+```
 Appliance Import
-
+```shell
 qm importdisk VMID pathtoappliance.ova local-lvm
-
+```
 
 ## Disk Management
 
 ### Find a disc with ID:
-
+```shell
 ls /dev/disk/by-id/ -la
-
+```
+```shell
 ls /dev/disk/by-id/ -la | grep "serial"
-
+```
 
 ### list disk informations: Replace X
-
+```shell
 lsblk -o name,model,serial,uuid /dev/sdX
-
+```
 
 ### Read actual partition status after change
-
+```shell
 hdparm -z /dev/sdX
-
+```
 ## Zpool Management  
 
 
 ### Find ARC RAM usage for Zpool:
-
+```shell
 awk '/^size/ { print $1 " " $3 / 1048576 }' < /proc/spl/kstat/zfs/arcstats
-
+```
 
 ### Replace Zpool Drive:
-
+```shell
 zpool replace pool /old/drive /new/drive
-
+```
 
 ### mark a pool a OK - Clear errors on pool and drives
-
+```shell
 zpool clear "poolname"
-
+```
 
 ### Get Zpool version:
-
+```shell
 zpool --version
-
+```
 
 ### ugrade a zpool:
-
+```shell
 zpool upgrade "poolname"
-
+```
 ## Monitoring
 
 ### live disk IO
-
+```shell
 watch -n 1 "zpool iostat -v"
-
+```
 ## Tools
 
 Ioping - usefull to simulate drive activity and therefore locating it.
