@@ -10,13 +10,16 @@ This repository contains somes scripts and tips for Proxmox hypervisor and backu
 
 Find here [more of my videos about proxmox](https://www.youtube.com/playlist?list=PLU73OWQhDzsTfsnczSJWENIpZn1CNMzNP)
 
+## New tool - Poxmox Toolbox:
+I wrote a new tool to get small configurations done in no time:
+Please give it a try because some of the tools hosted here were migrated in it
+[Proxmox Toolbox](https://github.com/Tontonjo/proxmox_toolbox)
 
 ### pve_pbs_nosubscription_noenterprisesources.sh
-Set no enterprise sources
-![Script](https://i.ibb.co/VY57ty3/Screenshot-2021-05-25-094719.png)
-Disable no subscription message
-
-full upgrade server
+![Script](https://i.ibb.co/VY57ty3/Screenshot-2021-05-25-094719.png)  
+Disable no subscription message  
+full upgrade server  
+To set sources - use [Proxmox Toolbox](https://github.com/Tontonjo/proxmox_toolbox)  
 
 #### USAGE
 
@@ -25,13 +28,5 @@ You can run this script directly using:
 wget -q -O - https://raw.githubusercontent.com/Tontonjo/proxmox/master/pve_pbs_nosubscription_noenterprisesources.sh | bash
 ```
 ### ez_proxmox_mail_configurator.sh
-Helps you to enable email notifications on your Proxmox VE server but can be used for every postfix configuration
-
-#### USAGE
-You can run this scritp directly using:
-```shell
-wget -q https://raw.githubusercontent.com/Tontonjo/proxmox/master/ez_proxmox_mail_configurator.sh
-```
-```shell
-bash ez_proxmox_mail_configurator.sh
-```
+This tool is now part of:  
+[Proxmox Toolbox](https://github.com/Tontonjo/proxmox_toolbox)
