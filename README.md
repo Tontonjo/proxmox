@@ -28,5 +28,5 @@ You can run this script directly using:
 wget -q -O - https://raw.githubusercontent.com/Tontonjo/proxmox/master/pve_pbs_nosubscription_noenterprisesources.sh | bash
 ```
 ### ez_proxmox_mail_configurator.sh
-This tool is now part of:  
+This tool is now part of Proxmox Toolbox and will no longer be updated here.
 [Proxmox Toolbox](https://github.com/Tontonjo/proxmox_toolbox)
