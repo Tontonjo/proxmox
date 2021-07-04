@@ -13,6 +13,7 @@
 # I am no programmer - just tying to get some begginers life a bit easier
 # There will be bugs or things i did not thinked about - sorry - if so, try to solve-it yourself, let me kindly know and PR:-)
 
+
 # USAGE
 # You can run this scritp directly using:
 # wget -q https://raw.githubusercontent.com/Tontonjo/proxmox/master/ez_proxmox_mail_configurator.sh
