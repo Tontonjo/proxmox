@@ -48,6 +48,11 @@ hdparm -z /dev/sdX
 awk '/^size/ { print $1 " " $3 / 1048576 }' < /proc/spl/kstat/zfs/arcstats
 ```
 
+### Find Compression ratio and used space:
+```shell
+zfs list -o name,avail,used,refer,lused,lrefer,mountpoint,compress,compressratio
+``` 
+
 ### Replace Zpool Drive:
 ```shell
 zpool replace pool /old/drive /new/drive
