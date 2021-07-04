@@ -10,7 +10,7 @@
 # You can run this script directly using:
 # wget -q -O - https://raw.githubusercontent.com/Tontonjo/proxmox/master/pve_pbs_nosubscription_noenterprisesources.sh | bash
 
-version=2.2
+version=3.0
 # V1.0: Initial Release with support for both PVE and PBS
 # V2.0: Old scripts points there now :-)
 # V2.1: Some corrections and enhancements in the subscription part
