@@ -45,6 +45,9 @@ varversion=1.7
 #V1.6: Change sed for postmap command / swap restore and fix menus
 #V1.7: add test and resolution for connexion error due to ipv6 resolution on ipv4 network
 
+echo "This tool will no longer be updated here"
+echo "please use Proxmox Toolbox at https://github.com/Tontonjo/proxmox_toolbox/blob/main/proxmox_toolbox.sh"
+
 if [ $(dpkg-query -W -f='${Status}' libsasl2-modules 2>/dev/null | grep -c "ok installed") -eq 0 ];
 then
   apt-get install -y libsasl2-modules;
