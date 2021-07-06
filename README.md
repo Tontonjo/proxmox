@@ -15,10 +15,10 @@ I wrote a new tool to get small configurations done in no time:
 Please give it a try because some of the tools hosted here were migrated in it
 [Proxmox Toolbox](https://github.com/Tontonjo/proxmox_toolbox)
 
-### pve_pbs_nosubscription_noenterprisesources.sh
+### proxmox_updater.sh
 ![Script](https://i.ibb.co/VY57ty3/Screenshot-2021-05-25-094719.png)  
-Disable no subscription message  
 full upgrade server  
+Disable no subscription message  
 To set sources - use [Proxmox Toolbox](https://github.com/Tontonjo/proxmox_toolbox)  
 
 #### USAGE
