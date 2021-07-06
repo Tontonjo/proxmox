@@ -3,12 +3,15 @@
 # Tonton Jo - 2021
 # Join me on Youtube: https://www.youtube.com/c/tontonjo
 
-# Script for initial proxomox subscription and sources list settings
+# This script update Proxmox and if there's a no-subscription source set, it remove the no-subcription message.
+# removing subscription message is known to deny update trough GUI.
+# Thsi script used to contain the no-subscription repository setup wich is now part of "proxmox_toolbox"
+
 # https://www.youtube.com/watch?v=X-a_LGKFIPg
 
 # USAGE
 # You can run this script directly using:
-# wget -q -O - https://raw.githubusercontent.com/Tontonjo/proxmox/master/pve_pbs_nosubscription_noenterprisesources.sh | bash
+# wget -q -O - https://raw.githubusercontent.com/Tontonjo/proxmox/master/proxmox_updater.sh | bash
 
 version=3.0
 # V1.0: Initial Release with support for both PVE and PBS
@@ -32,10 +35,9 @@ echo "----------------------------------------------------------------"
 # -----------------ENVIRONNEMENT VARIABLES----------------------
 pve_log_folder="/var/log/pve/tasks/"
 proxmoxlib="/usr/share/javascript/proxmox-widget-toolkit/proxmoxlib.js"
-distribution=$(. /etc/*-release;echo $VERSION_CODENAME)
 # ---------------END OF ENVIRONNEMENT VARIABLES-----------------
 
-#1: update:
+#1: Zpdate:
 echo "- Updating System"
 apt-get update -y -qq
 apt-get upgrade -y -qq
@@ -55,4 +57,7 @@ if grep -Ewqi "no-subscription" /etc/apt/sources.list; then
 			sed -Ezi.bak "s/(Ext.Msg.show\(\{\s+title: gettext\('No valid sub)/void\(\{ \/\/\1/g" $proxmoxlib && systemctl restart proxmox-backup-proxy.service
 		fi
 	fi
+else
+echo "- Host has no no-subscription repository configured"
+echo "- Please configure them before with proxmox_toolbox"
 fi
