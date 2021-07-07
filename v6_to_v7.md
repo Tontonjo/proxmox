@@ -31,5 +31,5 @@ reboot now
 ```
 
 # Liens utiles:
-[Proxmox v7 changelog](https://pve.proxmox.com/wiki/Roadmap#Proxmox_VE_7.0)
-[Proxmox V6 to V7 Guide](https://pve.proxmox.com/wiki/Upgrade_from_6.x_to_7.0)
+[Proxmox v7 changelog](https://pve.proxmox.com/wiki/Roadmap#Proxmox_VE_7.0)  
+[Proxmox V6 to V7 Guide](https://pve.proxmox.com/wiki/Upgrade_from_6.x_to_7.0)  
