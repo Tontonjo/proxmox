@@ -29,7 +29,7 @@ version=3.0
 
 echo "----------------------------------------------------------------"
 echo "Tonton Jo - 2021"
-echo "Proxmox subscription and sources inital setup V$version"
+echo "Proxmox updateder V$version"
 echo "----------------------------------------------------------------"
 
 # -----------------ENVIRONNEMENT VARIABLES----------------------
