@@ -28,7 +28,16 @@ apt-get dist-upgrade
 ## 5 - Reboot final  
 ```shell
 reboot now
-```
+```  
+## 6 - Mise à jour finale  
+```shell  
+apt-get update
+apt-get upgrade 
+```  
+## 7 - Nettoyage des anciens paquets
+```shell  
+apt autoremove
+```  
 
 # Liens utiles:
 [Proxmox v7 changelog](https://pve.proxmox.com/wiki/Roadmap#Proxmox_VE_7.0)  
