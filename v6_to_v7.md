@@ -20,7 +20,7 @@ pve6to7 --full
 ```shell
 sed -i 's/buster\/updates/bullseye-security/g;s/buster/bullseye/g' /etc/apt/sources.list
 ```  
-## 4 - Mise à jour vers Proxmox 11  
+## 4 - Mise à jour vers Proxmox V7  
 ```shell
 apt-get update
 apt-get dist-upgrade
