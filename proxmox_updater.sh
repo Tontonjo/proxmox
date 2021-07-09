@@ -5,7 +5,7 @@
 
 # This script update Proxmox and if there's a no-subscription source set, it remove the no-subcription message.
 # removing subscription message is known to deny update trough GUI.
-# Thsi script used to contain the no-subscription repository setup wich is now part of "proxmox_toolbox"
+# This script used to contain the no-subscription repository setup wich is now part of "proxmox_toolbox"
 
 # https://www.youtube.com/watch?v=X-a_LGKFIPg
 
@@ -18,7 +18,7 @@ version=3.0
 # V2.0: Old scripts points there now :-)
 # V2.1: Some corrections and enhancements in the subscription part
 # V2.2: Enhanced sileeeeence
-# V3.0: removed repository configuration in Proxmox Toolbox - Enhanced configuration for no subscription. Tool now named "proxmox_updater.sh"
+# V3.0: removed repository configuration wich is now in Proxmox Toolbox - Enhanced configuration for no subscription. Tool now named "proxmox_updater.sh"
 
 # Sources:
 # https://pve.proxmox.com/wiki/Package_Repositories
