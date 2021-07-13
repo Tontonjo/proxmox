@@ -6,7 +6,7 @@ and to [Subscribe to my youtube channel](http://youtube.com/channel/UCnED3K6K5FD
 
 Source: https://pbs.proxmox.com/wiki/index.php/Upgrade_from_1.1_to_2.x  
 
-# Voici les quelques commandes utilisées pour mettre à jour Proxmox Backup Server de la version 1.1 à la version 2.X
+## Voici les quelques commandes utilisées pour mettre à jour Proxmox Backup Server de la version 1.1 à la version 2.X
 
 ## 1 - Mise à jour complète du système:  
 ```shell
