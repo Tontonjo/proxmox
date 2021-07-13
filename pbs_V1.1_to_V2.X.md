@@ -11,7 +11,8 @@ Source: https://pbs.proxmox.com/wiki/index.php/Upgrade_from_1.1_to_2.x
 ## 1 - Mise à jour complète du système:  
 ```shell
 apt-get update
-apt-get dist-ugprade
+apt-get upgrade
+apt-get dist-upgrade
 ```  
 ## 2 - Checklist de contrôle:  
 ```shell
