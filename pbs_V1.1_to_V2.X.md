@@ -14,7 +14,7 @@ apt-get update
 apt-get upgrade
 apt-get dist-upgrade
 ```  
-## 2 - Checklist de contrôle:  
+## 2 - Contrôle de la version:  
 ```shell
 proxmox-backup-manager versions
 ```  
