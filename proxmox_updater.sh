@@ -19,6 +19,7 @@ version=3.0
 # V2.1: Some corrections and enhancements in the subscription part
 # V2.2: Enhanced sileeeeence
 # V3.0: removed repository configuration wich is now in Proxmox Toolbox - Enhanced configuration for no subscription. Tool now named "proxmox_updater.sh"
+# V3.1: correction to no-subscription message removal detection
 
 # Sources:
 # https://pve.proxmox.com/wiki/Package_Repositories
