@@ -10,7 +10,7 @@ and to [Subscribe to my youtube channel](http://youtube.com/channel/UCnED3K6K5FD
 ```shell
 apt-get update
 apt-get upgrade
-apt-get dist-ugprade
+apt-get dist-upgrade
 ```  
 ## 2 - Checklist de contrôle:  
 ```shell
@@ -32,7 +32,7 @@ reboot now
 ## 6 - Mise à jour finale  
 ```shell  
 apt-get update
-apt-get upgrade 
+apt-get dist-upgrade
 ```  
 ## 7 - Nettoyage des anciens paquets
 ```shell  
