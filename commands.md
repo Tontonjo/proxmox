@@ -8,8 +8,11 @@ You'll find there some usefull commands used for proxmox
 ### Stop all services:  
 ```shell
 for i in pve-cluster pvedaemon vz qemu-server pveproxy pve-cluster; do systemctl stop $i ; done
-```
-
+```  
+### Reload disk paritions state after changes:  
+```shell
+echo 1 > /sys/block/sdX/device/rescan
+```  
 ## VM Management
 
 ### Disk passtrough
