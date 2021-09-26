@@ -3,30 +3,30 @@
 
 You'll find there some usefull commands used for proxmox
 
-## Proxmox
+## 1 - Proxmox
 
-### Stop all services:  
+### 1.1 - Stop all services:  
 ```shell
 for i in pve-cluster pvedaemon vz qemu-server pveproxy pve-cluster; do systemctl stop $i ; done
 ```  
-### Reload disk paritions state after changes:  
+### 1.2 - Reload disk paritions state after changes:  
 ```shell
 echo 1 > /sys/block/sdX/device/rescan
 ```  
-## VM Management
+## 2 - VM Management
 
-### Disk passtrough
+### 2.1 - Disk passtrough
 ```shell
 qm set VMID -scsi0 /dev/sdX
 ```
-Appliance Import
+###  2.2 - Appliance Import
 ```shell
 qm importdisk VMID pathtoappliance.ova local-lvm
 ```
 
-## Disk Management
+## 3 - Disk Management
 
-### Find a disc with ID:
+### 3.1 - Find a disc with ID:
 ```shell
 ls /dev/disk/by-id/ -la
 ```
@@ -34,63 +34,63 @@ ls /dev/disk/by-id/ -la
 ls /dev/disk/by-id/ -la | grep "serial"
 ```
 
-### list disk informations: Replace X
+### 3.2 - list disk informations: Replace X
 ```shell
 lsblk -o name,model,serial,uuid /dev/sdX
 ```
 
-### Read actual partition status after change
+###  3.3 - Read actual partition status after change
 ```shell
 hdparm -z /dev/sdX
 ```
-## Zpool Management  
+##  4 - Zpool Management  
 
-### Remove import of removed pools at startup:  
-#### Identify your pools:
+###  4.1 - Remove import of removed pools at startup:  
+####  4.1.1 - Identify your pools:
 ```shell
 systemctl | grep zfs
 ```
-#### Disable the import
+#### 4.1.2 -  Disable the import
 ```shell
 systemctl disable zfs-import@zpoolname.service
 ```
 
-### Find ARC RAM usage for Zpool:
+### 4.2 - Find ARC RAM usage for Zpool:
 ```shell
 awk '/^size/ { print $1 " " $3 / 1048576 }' < /proc/spl/kstat/zfs/arcstats
 ```
 
-### Find Compression ratio and used space:
+### 4.3 - Find Compression ratio and used space:
 ```shell
 zfs list -o name,avail,used,refer,lused,lrefer,mountpoint,compress,compressratio
 ``` 
 
-### Replace Zpool Drive:
+### 4.4 - Replace Zpool Drive:
 ```shell
 zpool replace pool /old/drive /new/drive
 ```
 
-### mark a pool a OK - Clear errors on pool and drives
+### 4.5 - Mark a pool a OK - Clear errors on pool and drives
 ```shell
 zpool clear "poolname"
 ```
 
-### Get Zpool version:
+### 4.6 - Get Zpool version:
 ```shell
 zpool --version
 ```
 
-### ugrade a zpool:
+### 4.7 - Ugrade a zpool:
 ```shell
 zpool upgrade "poolname"
 ```
-## Monitoring
+## 5 - Monitoring
 
-### live disk IO
+### 5.1 - Live disk IO
 ```shell
 watch -n 1 "zpool iostat -v"
 ```
-## Tools
+## 6 - Tools
 
 Ioping - usefull to simulate drive activity and therefore locating it.
 
