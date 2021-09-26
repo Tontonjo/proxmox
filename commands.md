@@ -45,6 +45,15 @@ hdparm -z /dev/sdX
 ```
 ## Zpool Management  
 
+### Remove import of removed pools at startup:  
+#### Identify your pools:
+```shell
+systemctl | grep zfs
+```
+#### Disable the import
+```shell
+systemctl disable zfs-import@zpoolname.service
+```
 
 ### Find ARC RAM usage for Zpool:
 ```shell
