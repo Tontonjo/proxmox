@@ -11,7 +11,7 @@ varversion=1.0
 
 # USAGE
 # You can run this scritp directly using:
-# wget https://raw.githubusercontent.com/Tontonjo/proxmox/master/drive-passtrough.sh
+# wget -q -O drive-passtrough.sh https://raw.githubusercontent.com/Tontonjo/proxmox/master/drive-passtrough.sh
 # bash drive-passtrough.sh
 
 echo "----------------------------------------------------------------"
