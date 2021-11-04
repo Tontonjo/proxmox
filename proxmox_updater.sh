@@ -49,7 +49,7 @@ apt-get dist-upgrade -y -qq
 #2: Remove Subscription:
 #checking if no subscription sources are set and if file is already edited in order to not edit again
 if grep -q "no-subscription" /etc/apt/sources.list; then
-	if grep -q "void({" $proxmoxlib; then
+	if grep -q "== 'active'" $proxmoxlib; then
 		echo "- Subscription Message already removed - Skipping"
 	else
 		if [ -d "$pve_log_folder" ]; then
