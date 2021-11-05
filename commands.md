@@ -38,9 +38,12 @@ ls /dev/disk/by-id/ -la | grep "serial"
 ```shell
 lsblk -o name,model,serial,uuid /dev/sdX
 ```
-###  3.3 - find disk partition UUID 
+###  3.3 - find disk UUID or partition UUID
 ```shell
 ls -l /dev/disk/by-uuid
+```
+```shell
+ls -l /dev/disk/by-partuuid
 ```
 ###  3.4 - Read actual partition status after change
 ```shell
