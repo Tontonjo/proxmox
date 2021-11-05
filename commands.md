@@ -38,11 +38,15 @@ ls /dev/disk/by-id/ -la | grep "serial"
 ```shell
 lsblk -o name,model,serial,uuid /dev/sdX
 ```
-
-###  3.3 - Read actual partition status after change
+###  3.3 - find disk partition UUID 
+```shell
+ls -l /dev/disk/by-uuid
+```
+###  3.4 - Read actual partition status after change
 ```shell
 hdparm -z /dev/sdX
 ```
+
 ##  4 - Zpool Management  
 
 ###  4.1 - Remove import of removed pools at startup:  
