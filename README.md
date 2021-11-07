@@ -24,13 +24,11 @@ full upgrade server
 Disable no subscription message  
 To set sources - use [Proxmox Toolbox](https://github.com/Tontonjo/proxmox_toolbox)  
 
-#### USAGE
-
 ### proxmox Updater:
 This tool update proxmox host and if noenterprise repos are setup, remove no-subscription message.
 ```shell
 wget -q -O - https://github.com/Tontonjo/proxmox/raw/master/proxmox_updater.sh | bash
-```
+```  
 ### ez_proxmox_mail_configurator.sh
 This tool is now part of Proxmox Toolbox and will no longer be updated here.
 [Proxmox Toolbox](https://github.com/Tontonjo/proxmox_toolbox)
