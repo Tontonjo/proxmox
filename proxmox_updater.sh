@@ -13,7 +13,7 @@
 # You can run this script directly using:
 # wget -q -O - https://raw.githubusercontent.com/Tontonjo/proxmox/master/proxmox_updater.sh | bash
 
-version=3.2
+version=3.3
 # V1.0: Initial Release with support for both PVE and PBS
 # V2.0: Old scripts points there now :-)
 # V2.1: Some corrections and enhancements in the subscription part
@@ -21,6 +21,7 @@ version=3.2
 # V3.0: removed repository configuration wich is now in Proxmox Toolbox - Enhanced configuration for no subscription. Tool now named "proxmox_updater.sh"
 # V3.1: correction to no-subscription message removal detection
 # V3.2: Much better and smarter way to remove subscription message (credits to @adrien Linuxtricks)
+# V3.3: Fix remove subscription message detection
 
 # Sources:
 # https://pve.proxmox.com/wiki/Package_Repositories
