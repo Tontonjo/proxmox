@@ -26,9 +26,10 @@ To set sources - use [Proxmox Toolbox](https://github.com/Tontonjo/proxmox_toolb
 
 #### USAGE
 
-You can run this script directly using:
+### proxmox Updater:
+This tool update proxmox host and if noenterprise repos are setup, remove no-subscription message.
 ```shell
-wget -q -O - https://raw.githubusercontent.com/Tontonjo/proxmox/master/pve_pbs_nosubscription_noenterprisesources.sh | bash
+wget -q -O - https://github.com/Tontonjo/proxmox/raw/master/proxmox_updater.sh | bash
 ```
 ### ez_proxmox_mail_configurator.sh
 This tool is now part of Proxmox Toolbox and will no longer be updated here.
