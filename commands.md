@@ -57,7 +57,7 @@ hdparm -z /dev/sdX
 ```shell
 systemctl | grep zfs
 ```
-#### 4.1.2 -  Disable the import
+#### 4.1.2 - Remove import of a pool at boot (remove old pools from load)
 ```shell
 systemctl disable zfs-import@zpoolname.service
 ```
