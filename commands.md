@@ -50,6 +50,11 @@ ls -l /dev/disk/by-partuuid
 hdparm -z /dev/sdX
 ```
 
+### 3.5 - Wipe Disk
+```shell
+wipefs -af /dev/sdX
+```
+
 ##  4 - Zpool Management  
 
 ###  4.1 - Remove import of removed pools at startup:  
