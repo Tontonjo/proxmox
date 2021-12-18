@@ -81,7 +81,7 @@ zfs list -o name,avail,used,refer,lused,lrefer,mountpoint,compress,compressratio
 zpool replace pool /old/drive /new/drive
 ```
 
-### 4.5 - Mark a pool a OK - Clear errors on pool and drives
+### 4.5 - Mark a pool as OK - Clear errors on pool and drives
 ```shell
 zpool clear "poolname"
 ```
