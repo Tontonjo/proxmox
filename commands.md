@@ -9,10 +9,6 @@ You'll find there some usefull commands used for proxmox
 ```shell
 for i in pve-cluster pvedaemon vz qemu-server pveproxy pve-cluster; do systemctl stop $i ; done
 ```  
-### 1.2 - Reload disk paritions state after changes:  
-```shell
-echo 1 > /sys/block/sdX/device/rescan
-```  
 ## 2 - VM Management
 
 ### 2.1 - Disk passtrough
@@ -45,15 +41,18 @@ ls -l /dev/disk/by-uuid
 ```shell
 ls -l /dev/disk/by-partuuid
 ```
-###  3.4 - Read actual partition status after change
-```shell
-hdparm -z /dev/sdX
-```
 
-### 3.5 - Wipe Disk
+### 3.4 - Wipe Disk
 ```shell
 wipefs -af /dev/sdX
 ```
+###  3.5 - Read actual partition status after change
+```shell
+hdparm -z /dev/sdX
+```
+```shell
+echo 1 > /sys/block/sdX/device/rescan
+```  
 
 ##  4 - Zpool Management  
 
