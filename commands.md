@@ -94,7 +94,26 @@ zpool --version
 ### 4.7 - Ugrade a zpool:
 ```shell
 zpool upgrade "poolname"
+```  
+### 4.8 - Zpool options settings
+### 4.8.1 - Get your $poolname
+```shell
+zfs list
 ```
+### 4.8.2 - find actual options - filter if necessary
+```shell
+zfs get all 
+```
+```shell
+zfs get all | grep atime
+```
+### 4.8.3 - Set new option value
+```shell
+zfs set atime=off $poolname
+```
+```shell
+zfs set compression=off $poolname
+```  
 ## 5 - Monitoring
 
 ### 5.1 - Live disk IO
