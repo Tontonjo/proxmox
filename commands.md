@@ -93,7 +93,7 @@ zpool --version
 
 ### 4.7 - Ugrade a zpool:
 ```shell
-zpool upgrade "poolname"
+zpool upgrade "$poolname"
 ```  
 ### 4.8 - Zpool options settings
 ### 4.8.1 - Get your $poolname
@@ -113,6 +113,13 @@ zfs set atime=off $poolname
 ```
 ```shell
 zfs set compression=off $poolname
+```  
+### 4.9 - If pool is created with /dev/sdX instead of ID (wich may lead to mount fail)
+```shell
+zpool export $poolname
+```  
+```shell
+zpool import -d /dev/disk/by-id -aN
 ```  
 ## 5 - Monitoring
 
