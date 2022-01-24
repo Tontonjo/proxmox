@@ -3,17 +3,14 @@
 # Tonton Jo - 2021
 # Join me on Youtube: https://www.youtube.com/c/tontonjo
 
-# This script update Proxmox and if there's a no-subscription source set, it remove the no-subcription message.
-# removing subscription message is known to deny update trough GUI.
-# This script used to contain the no-subscription repository setup wich is now part of "proxmox_toolbox"
-
+# This script is intended to update Proxmox and if there's a no-subscription source set, it removes the no-subscription message.
 # https://www.youtube.com/watch?v=X-a_LGKFIPg
 
 # USAGE
 # You can run this script directly using:
 # wget -q -O - https://raw.githubusercontent.com/Tontonjo/proxmox/master/proxmox_updater.sh | bash
 
-version=3.4
+version=3.5
 # V1.0: Initial Release with support for both PVE and PBS
 # V2.0: Old scripts points there now :-)
 # V2.1: Some corrections and enhancements in the subscription part
@@ -23,6 +20,7 @@ version=3.4
 # V3.2: Much better and smarter way to remove subscription message (credits to @adrien Linuxtricks)
 # V3.3: Fix remove subscription message detection
 # V3.4: Add echo when restarting proxy
+# V3.5: Various typo
 
 # Sources:
 # https://pve.proxmox.com/wiki/Package_Repositories
@@ -42,7 +40,7 @@ pve_log_folder="/var/log/pve/tasks/"
 proxmoxlib="/usr/share/javascript/proxmox-widget-toolkit/proxmoxlib.js"
 # ---------------END OF ENVIRONNEMENT VARIABLES-----------------
 
-#1: Zpdate:
+#1: Update:
 echo "- Updating System"
 apt-get update -y -qq
 apt-get upgrade -y -qq
@@ -52,17 +50,20 @@ apt-get dist-upgrade -y -qq
 #checking if no subscription sources are set and if file is already edited in order to not edit again
 if grep -q "no-subscription" /etc/apt/sources.list; then
 		if grep -q ".data.status.toLowerCase() == 'active') {" $proxmoxlib; then
-					echo "- Subscription Message already removed - Skipping"
+			echo "- Subscription Message already removed - Skipping"
 		else
 			if [ -d "$pve_log_folder" ]; then
 				echo "- Removing No Valid Subscription Message for PVE"
-				sed -Ezi.bak "s/!== 'active'/== 'active'/" $proxmoxlib && echo "- Restarting proxy service" && systemctl restart pveproxy.service
+				sed -Ezi.bak "s/!== 'active'/== 'active'/" $proxmoxlib
+				echo "- Restarting proxy service"
+				systemctl restart pveproxy.service
 			else
 				echo "- Removing No Valid Subscription Message for PBS"
-				sed -Ezi.bak "s/!== 'active'/== 'active'/" $proxmoxlib && echo "- Restarting proxy service" && systemctl restart proxmox-backup-proxy.service
+				sed -Ezi.bak "s/!== 'active'/== 'active'/" $proxmoxlib
+				echo "- Restarting proxy service"
+				systemctl restart proxmox-backup-proxy.service
 			fi
 		fi
 else
-echo "- Host has no no-subscription repository configured"
-echo "- Please configure them before with proxmox_toolbox"
+echo "- Host does not have no-subscription repository configured - nothing to do."
 fi
