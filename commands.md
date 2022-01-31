@@ -1,7 +1,6 @@
-# Tonton Jo - 2020
-## Join me on Youtube: https://www.youtube.com/c/TontonJo
+# Tonton Jo - 2022
 
-You'll find there some usefull commands used for proxmox
+You'll find there some usefull commands used for proxmox and more generally debian
 
 ## 1 - Proxmox
 
