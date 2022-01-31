@@ -53,6 +53,10 @@ hdparm -z /dev/sdX
 ```shell
 echo 1 > /sys/block/sdX/device/rescan
 ```  
+###  3.6 - Find the actual blocksize of all disks - Usually 4k
+```shell
+lsblk -o NAME,PHY-SeC
+```
 
 ##  4 - Zpool Management  
 
