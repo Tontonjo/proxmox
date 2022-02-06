@@ -10,7 +10,7 @@
 # You can run this script directly using:
 # wget -q -O - https://raw.githubusercontent.com/Tontonjo/proxmox/master/proxmox_updater.sh | bash
 
-version=3.5
+version=3.6
 # V1.0: Initial Release with support for both PVE and PBS
 # V2.0: Old scripts points there now :-)
 # V2.1: Some corrections and enhancements in the subscription part
@@ -21,6 +21,7 @@ version=3.5
 # V3.3: Fix remove subscription message detection
 # V3.4: Add echo when restarting proxy
 # V3.5: Various typo
+# V3.6: now directly redirect to proxmox-toolox - this script wont be updated
 
 # Sources:
 # https://pve.proxmox.com/wiki/Package_Repositories
@@ -35,35 +36,7 @@ echo "Tonton Jo - 2021"
 echo "Proxmox updateder V$version"
 echo "----------------------------------------------------------------"
 
-# -----------------ENVIRONNEMENT VARIABLES----------------------
-pve_log_folder="/var/log/pve/tasks/"
-proxmoxlib="/usr/share/javascript/proxmox-widget-toolkit/proxmoxlib.js"
-# ---------------END OF ENVIRONNEMENT VARIABLES-----------------
+echo "- Please no user proxmox-toolbox.sh with -u option to update:"
+echo "- wget -qO - https://raw.githubusercontent.com/Tontonjo/proxmox_toolbox/main/proxmox_toolbox.sh | bash /dev/stdin -u"
 
-#1: Update:
-echo "- Updating System"
-apt-get update -y -qq
-apt-get upgrade -y -qq
-apt-get dist-upgrade -y -qq
-
-#2: Remove Subscription:
-#checking if no subscription sources are set and if file is already edited in order to not edit again
-if grep -q "no-subscription" /etc/apt/sources.list; then
-		if grep -q ".data.status.toLowerCase() == 'active') {" $proxmoxlib; then
-			echo "- Subscription Message already removed - Skipping"
-		else
-			if [ -d "$pve_log_folder" ]; then
-				echo "- Removing No Valid Subscription Message for PVE"
-				sed -Ezi.bak "s/!== 'active'/== 'active'/" $proxmoxlib
-				echo "- Restarting proxy service"
-				systemctl restart pveproxy.service
-			else
-				echo "- Removing No Valid Subscription Message for PBS"
-				sed -Ezi.bak "s/!== 'active'/== 'active'/" $proxmoxlib
-				echo "- Restarting proxy service"
-				systemctl restart proxmox-backup-proxy.service
-			fi
-		fi
-else
-echo "- Host does not have no-subscription repository configured - nothing to do."
-fi
+wget -qO - https://raw.githubusercontent.com/Tontonjo/proxmox_toolbox/main/proxmox_toolbox.sh | bash /dev/stdin -u
