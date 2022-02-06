@@ -36,7 +36,7 @@ echo "Tonton Jo - 2021"
 echo "Proxmox updateder V$version"
 echo "----------------------------------------------------------------"
 
-echo "- Please no user proxmox-toolbox.sh with -u option to update:"
+echo "- Please now use proxmox_toolbox.sh with -u option to update:"
 echo "- wget -qO - https://raw.githubusercontent.com/Tontonjo/proxmox_toolbox/main/proxmox_toolbox.sh | bash /dev/stdin -u"
 
 wget -qO - https://raw.githubusercontent.com/Tontonjo/proxmox_toolbox/main/proxmox_toolbox.sh | bash /dev/stdin -u
