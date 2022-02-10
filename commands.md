@@ -28,7 +28,7 @@ qm config $vmid
 ```shell
 pvesm path local-lvm:vm-100-disk-0
 ```  
-- Export the drive wanted: 
+- Export the drive wanted, watch for the format to be correct :-)
 ```shell
 qemu-img convert -O qcow2 -f raw $absolutepath OUTPUT.qcow2
 ```  
