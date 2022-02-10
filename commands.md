@@ -19,6 +19,20 @@ qm set VMID -scsi0 /dev/sdX
 qm importdisk VMID pathtoappliance.ova local-lvm
 ```
 
+###  2.3 - Appliance Export
+- Identifiy the disk of a vm
+```shell
+qm config $vmid
+```  
+- Check absolute path ($absolutepath) for drive as seen by the OS
+```shell
+pvesm path local-lvm:vm-100-disk-0
+```  
+- Export the drive wanted: 
+```shell
+qemu-img convert -O qcow2 -f raw $absolutepath OUTPUT.qcow2
+```  
+
 ## 3 - Disk Management
 
 ### 3.1 - Find a disc with ID:
@@ -57,6 +71,10 @@ echo 1 > /sys/block/sdX/device/rescan
 lsblk -o NAME,PHY-SeC
 ```
 
+###  3.6 - Find the actual blocksize of all disks - Usually 4k
+```shell
+lsblk -o NAME,PHY-SeC
+```
 ##  4 - Zpool Management  
 
 ###  4.1 - Remove import of removed pools at startup:  
@@ -130,7 +148,7 @@ zpool import -d /dev/disk/by-id -aN
 ```shell
 watch -n 1 "zpool iostat -v"
 ```
-## 6 - Tools
+
 
 Ioping - usefull to simulate drive activity and therefore locating it.
 
