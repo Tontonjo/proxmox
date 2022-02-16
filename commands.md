@@ -12,11 +12,11 @@ for i in pve-cluster pvedaemon vz qemu-server pveproxy pve-cluster; do systemctl
 
 ### 2.1 - Disk passtrough
 ```shell
-qm set VMID -scsi0 /dev/sdX
+qm set $vmid -scsi0 /dev/sdX
 ```
 ###  2.2 - Appliance Import
 ```shell
-qm importdisk VMID pathtoappliance.ova local-lvm
+qm importdisk $vmid pathtoappliance.ova local-lvm
 ```
 
 ###  2.3 - Appliance Export
