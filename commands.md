@@ -8,6 +8,12 @@ You'll find there some usefull commands used for proxmox and more generally debi
 ```shell
 for i in pve-cluster pvedaemon vz qemu-server pveproxy pve-cluster; do systemctl stop $i ; done
 ```  
+
+### 1.2 - Regenerate console login screen (usefull after ip changes)
+```shell
+pvebanner
+```  
+
 ## 2 - VM Management
 
 ### 2.1 - Disk passtrough
