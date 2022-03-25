@@ -13,26 +13,9 @@ This repository contains somes scripts and tips for Proxmox hypervisor and backu
 
 Find here [more of my videos about proxmox](https://www.youtube.com/playlist?list=PLU73OWQhDzsTfsnczSJWENIpZn1CNMzNP)
 
-## Usefull commands - commands.md
-You'll find there some usefull commands to manage and supervise your proxmox host:  
-[Proxmox usefull commands](https://github.com/Tontonjo/proxmox/blob/master/commands.md)
-
-## New tool - Poxmox Toolbox:
-I wrote a new tool to get small configurations done in no time:
-Please give it a try because some of the tools hosted here were migrated in it
-[Proxmox Toolbox](https://github.com/Tontonjo/proxmox_toolbox)
-
-### proxmox_updater.sh
-![Script](https://i.ibb.co/VY57ty3/Screenshot-2021-05-25-094719.png)  
-full upgrade server  
-Disable no subscription message  
-To set sources - use [Proxmox Toolbox](https://github.com/Tontonjo/proxmox_toolbox)  
-This tool update proxmox host and if noenterprise repos are setup, remove no-subscription message.
-```shell
-wget -q -O - https://github.com/Tontonjo/proxmox/raw/master/proxmox_updater.sh | bash
-```  
-### ez_proxmox_mail_configurator.sh
-This tool is now part of Proxmox Toolbox and will no longer be updated here.
+## Proxmox Toolbox
+This tools will help you get your Proxmox VE and BS installations configured and secured in no time:
+- set sources, update bin, remove subsciption message, fail2ban, snmp, mail notifications and much more
 [Proxmox Toolbox](https://github.com/Tontonjo/proxmox_toolbox)
 
 # Usefull commands:
