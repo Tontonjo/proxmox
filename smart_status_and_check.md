@@ -14,7 +14,6 @@ bits:
 emplacement du fichier de configuration: /etc/smartd.conf
 Configuration pour programmation des self-tests:
 
-### Suppression de -H et -f car inclus dans la commande -a selon "https://linux.die.net/man/5/smartd.conf"
 DEVICESCAN -d auto -n never -a -s (S/../../7/22|L/../01/./22) -m root -M exec /usr/share/smartmontools/smartd-runner
 
 service smartd restart
