@@ -13,7 +13,8 @@ bits:
 
 emplacement du fichier de configuration: /etc/smartd.conf
 Configuration pour programmation des self-tests:
-
-DEVICESCAN -d auto -n never -a -s (S/../../7/22|L/../01/./22) -m root -M exec /usr/share/smartmontools/smartd-runner
-
+```
+DEVICESCAN -d auto -n never -a -s (S/../../7/22|L/../01/./22) -m root -M exec /usr/share/smartmontools/smartd-runner  
+```shell
 service smartd restart
+```
