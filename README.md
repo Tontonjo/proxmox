@@ -21,7 +21,36 @@ This tools will help you get your Proxmox VE and BS installations configured and
 # Usefull commands:
 You'll find there some usefull commands used for proxmox and more generally debian
 
-## 1 - Proxmox
+## 1 - Proxmox General
+
+
+## 2 - Proxmox Virtual Environement
+
+## 2.1 - VM Management
+
+### 2.1.1 - Disk passtrough
+```shell
+qm set $vmid -scsi0 /dev/sdX
+```
+###  2..1.2 - Appliance Import
+```shell
+qm importdisk $vmid pathtoappliance.ova local-lvm
+```
+
+## 3 - Proxmox Backup Server
+
+### 3.1 - Recover / add an existing datastore:
+- edit "/etc/proxmox-backup/datastore.cfg"
+```shell
+datastore: backup
+	gc-schedule daily
+	keep-daily 1
+	keep-last 1
+	keep-monthly 5
+	keep-weekly 5
+	path /mnt/datastore/backup
+	prune-schedule 2,22:30
+```  
 
 ### 1.1 - Stop all services:  
 ```shell
@@ -33,16 +62,7 @@ for i in pve-cluster pvedaemon vz qemu-server pveproxy pve-cluster; do systemctl
 pvebanner
 ```  
 
-## 2 - VM Management
 
-### 2.1 - Disk passtrough
-```shell
-qm set $vmid -scsi0 /dev/sdX
-```
-###  2.2 - Appliance Import
-```shell
-qm importdisk $vmid pathtoappliance.ova local-lvm
-```
 
 ###  2.3 - Appliance Export
 - Identifiy the disk of a vm
