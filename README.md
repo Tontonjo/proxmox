@@ -162,7 +162,10 @@ qm config $vmid
 ```  
 - Check absolute path ($absolutepath) for drive as seen by the OS
 ```shell
-pvesm path local-lvm:vm-100-disk-0
+absolutepath=$(pvesm path local-lvm:vm-100-disk-0)
+```  
+```shell
+echo $absolutepath
 ```  
 - Export the drive wanted, watch for the format to be correct :-)
 ```shell
