@@ -23,6 +23,8 @@ This [Proxmox Toolbox](https://github.com/Tontonjo/proxmox_toolbox) will help yo
 - mail notifications 
 - And much more
 
+# Useefull doc:
+[Move a disk from a VM to another one](https://pve.proxmox.com/wiki/Moving_disk_image_from_one_KVM_machine_to_another)
 
 # Usefull commands:
 You'll find there some usefull commands used for proxmox and more generally debian
