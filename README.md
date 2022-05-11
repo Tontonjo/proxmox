@@ -14,7 +14,7 @@ This repository contains somes scripts and tips for Proxmox hypervisor and backu
 Find here [more of my videos about proxmox](https://www.youtube.com/playlist?list=PLU73OWQhDzsTfsnczSJWENIpZn1CNMzNP)
 
 ## Proxmox Toolbox - all-in-one setup tool!
-This [Proxmox Toolbox](https://github.com/Tontonjo/proxmox_toolbox) will help you get your Proxmox VE and BS installations configured and secured in no time:
+This [Proxmox Toolbox](https://github.com/Tontonjo/proxmox_toolbox) will help you get your Proxmox VE and BS installations configured and secured in no time:  
 Set sources - New update command (proxmox-update) - Remove subsciption message - Security with Fail2ban - snmp - mail notifications - And much more
 
 # Usefull doc:
