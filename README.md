@@ -23,7 +23,9 @@ Set sources - New update command (proxmox-update) - Remove subsciption message -
 # Usefull commands:
 You'll find there some usefull commands used for proxmox and more generally debian
 
-# 1 - Proxmox General
+
+
+# 1 - Debian General
 
 ## 1.1 - Drives Management
 
@@ -133,10 +135,21 @@ zpool import -d /dev/disk/by-id -aN
 ```  
 ## 1.3 - Monitoring
 
-### 1.3.1 - Live disk IO
+### 1.3.1 - ZFS live disk IO
 ```shell
 watch -n 1 "zpool iostat -v"
 ```
+
+##  1.4 - PCI express  
+### 1.4.1 - Determine bus speed of a PCI-E Device ( and others infos if you remove the grep part )  
+- Identify your device:
+```shell
+lspci
+```  
+- Get infos
+```shell
+lspci -vv -s 2a:00.0
+```  
 
 # 2 - Proxmox Virtual Environement  
 ## 2.1 - Stop all services:  
