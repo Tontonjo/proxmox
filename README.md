@@ -150,7 +150,23 @@ lspci
 ```shell
 lspci -vv -s 2a:00.0
 ```  
-
+##  1.5 - CPU
+### 1.5.1 - Change CPU Gouvernor
+#### List availables CPU Gouvernors
+```shell
+cat /sys/devices/system/cpu/cpu0/cpufreq/scaling_available_governors
+```  
+#### Apply CPU Gouvernor
+```shell
+echo "ondemand" | tee /sys/devices/system/cpu/cpu*/cpufreq/scaling_governor
+```  
+#### Make CPU Governor reboot resilient
+```shell
+crontab -e
+```  
+```shell
+@reboot echo "ondemand" | tee /sys/devices/system/cpu/cpu*/cpufreq/scaling_governor >/dev/null 2>&1
+```  
 # 2 - Proxmox Virtual Environement  
 ## 2.1 - Stop all services:  
 ```shell
