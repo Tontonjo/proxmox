@@ -154,6 +154,10 @@ lspci -vv -s 2a:00.0
 ### 1.5.1 - Change CPU Gouvernor
 #### Informations:
 https://www.kernel.org/doc/Documentation/cpu-freq/governors.txt
+#### Get actual CPU gouvernor
+```shell
+cat /sys/devices/system/cpu/cpu0/cpufreq/scaling_governor
+```  
 #### List availables CPU Gouvernors
 ```shell
 cat /sys/devices/system/cpu/cpu0/cpufreq/scaling_available_governors
