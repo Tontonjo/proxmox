@@ -14,15 +14,16 @@ This repository contains somes scripts and tips for Proxmox hypervisor and backu
 Find here [more of my videos about proxmox](https://www.youtube.com/playlist?list=PLU73OWQhDzsTfsnczSJWENIpZn1CNMzNP)
 
 ## Proxmox Toolbox - all-in-one setup tool!
-This [Proxmox Toolbox](https://github.com/Tontonjo/proxmox_toolbox) will help you get your Proxmox VE and BS installations configured and secured in no time:  
-Set sources - New update command (proxmox-update) - Remove subsciption message - Security with Fail2ban - snmp - mail notifications - And much more
-
-# Usefull doc:
-[Move a disk from a VM to another one](https://pve.proxmox.com/wiki/Moving_disk_image_from_one_KVM_machine_to_another)
+If you want to setup and update your Proxmox VE / BS server, please have a look at my [Proxmox Toolbox](https://github.com/Tontonjo/proxmox_toolbox) 
+- Set no subscription sources  
+- New update command (proxmox-update) wich automatically remove message if needed  
+- Security with Fail2ban  
+- snmp  
+- mail notifications  
+- Backup and restoration of Proxmox VE / BS configurations 
 
 # Usefull commands:
 You'll find there some usefull commands used for proxmox and more generally debian
-
 
 
 # 1 - Debian General
