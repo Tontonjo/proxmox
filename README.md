@@ -170,7 +170,7 @@ crontab -e
 ```shell
 @reboot echo "ondemand" | tee /sys/devices/system/cpu/cpu*/cpufreq/scaling_governor >/dev/null 2>&1
 ```  
-## 1.6
+## 1.6 - Benchmark and performance test
 ### 1.6.1 - Test with DD - oflag=dsync -> ignore cache for accurate result
 ```shell
 dd if=/dev/zero of=/$pathtostorage/test1.img bs=1G count=1 oflag=dsync
