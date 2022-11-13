@@ -65,10 +65,6 @@ echo 1 > /sys/block/sdX/device/rescan
 lsblk -o NAME,PHY-SeC
 ```
 
-###  1.1.7 - Test speed of drive (hdparm needed)
-```shell
-hdparm -t /dev/$sdX
-```  
 ##  1.2 - Zpool Management  
 ###  1.2.1 - Remove import of removed pools at startup:  
 - Identify your pools:
@@ -173,6 +169,15 @@ crontab -e
 ```  
 ```shell
 @reboot echo "ondemand" | tee /sys/devices/system/cpu/cpu*/cpufreq/scaling_governor >/dev/null 2>&1
+```  
+## 1.6
+### 1.6.1 - Test with DD - oflag=dsync -> ignore cache for accurate result
+```shell
+dd if=/dev/zero of=/$pathtostorage/test1.img bs=1G count=1 oflag=dsync
+```
+### 1.6.2 - Test speed of drive (hdparm needed)
+```shell
+hdparm -t /dev/$sdX
 ```  
 # 2 - Proxmox Virtual Environement  
 ## 2.1 - Stop all services:  
