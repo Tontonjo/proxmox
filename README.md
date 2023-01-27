@@ -195,8 +195,12 @@ pvebanner
 qm set $vmid -scsi0 /dev/sdX
 ```
 ###  2.3.2 - Appliance Import
+#### If OVA: extract content
 ```shell
-qm importdisk $vmid pathtoappliance.ova local-lvm
+tar -xvf "path_to_appliance.ova"
+```
+```shell
+qm importdisk $vmid path_to_appliance_disk.vmdk local-lvm
 ```
 ##  2.3.3 - Appliance Export
 - Identifiy the disk of a vm
