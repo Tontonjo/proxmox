@@ -37,11 +37,11 @@ ls /dev/disk/by-id/ -la
 ```shell
 ls /dev/disk/by-id/ -la | grep "serial"
 ```
-## 1.1.2 - list disk informations: Replace X
+### 1.1.2 - list disk informations: Replace X
 ```shell
 lsblk -o name,model,serial,uuid /dev/sdX
 ```
-##  1.1.3 - find disk UUID or partition UUID
+###  1.1.3 - find disk UUID or partition UUID
 ```shell
 ls -l /dev/disk/by-uuid
 ```
@@ -49,18 +49,18 @@ ls -l /dev/disk/by-uuid
 ls -l /dev/disk/by-partuuid
 ```
 
-## 1.1.4 - Wipe Disk
+### 1.1.4 - Wipe Disk
 ```shell
 wipefs -af /dev/sdX
 ```
-## 1.1.5 - Read actual partition status after change
+### 1.1.5 - Read actual partition status after change
 ```shell
 hdparm -z /dev/sdX
 ```
 ```shell
 echo 1 > /sys/block/sdX/device/rescan
 ```  
-##  1.1.6 - Find the actual blocksize of all disks - Usually 4k
+###  1.1.6 - Find the actual blocksize of all disks - Usually 4k
 ```shell
 lsblk -o NAME,PHY-SeC
 ```
@@ -180,20 +180,21 @@ dd if=/dev/zero of=/$pathtostorage/test1.img bs=1G count=1 oflag=dsync
 hdparm -t /dev/$sdX
 ```  
 # 2 - Proxmox Virtual Environement  
-## 2.1 - Stop all services:  
+## 2.1 - Services management:  
+### 2.1.1 - Stop all services:  
 ```shell
 for i in pve-cluster pvedaemon vz qemu-server pveproxy pve-cluster; do systemctl stop $i ; done
 ```  
-## 2.2 - Regenerate console login screen (usefull after ip changes)
+## 2.2 - Proxmox commands  
+## 2.2.1 - Regenerate console login screen (usefull after ip changes)
 ```shell
 pvebanner
 ```  
-## 2.3 - VM Management
-
-### 2.3.1 - Disk passtrough
+## 2.3 - VM Management  
+### 2.3.1 - Disk passtrough  
 ```shell
 qm set $vmid -scsi0 /dev/sdX
-```
+```  
 ###  2.3.2 - Appliance Import
 #### If OVA: extract content
 ```shell
