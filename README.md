@@ -147,7 +147,8 @@ lspci
 ```shell
 lspci -vv -s 2a:00.0
 ```  
-### 1.4.2 - Find IOMMU groups - An IOMMU group is the smallest set of physical devices that can be passed to a virtual machine
+### 1.4.2 - Find IOMMU groups
+#### An IOMMU group is the smallest set of physical devices that can be passed to a virtual machine  
 ```shell
 #!/bin/bash
 shopt -s nullglob
