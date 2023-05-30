@@ -147,6 +147,17 @@ lspci
 ```shell
 lspci -vv -s 2a:00.0
 ```  
+### 1.4.2 - Find IOMMU groups - An IOMMU group is the smallest set of physical devices that can be passed to a virtual machine
+```shell
+#!/bin/bash
+shopt -s nullglob
+for g in $(find /sys/kernel/iommu_groups/* -maxdepth 0 -type d | sort -V); do
+    echo "IOMMU Group ${g##*/}:"
+    for d in $g/devices/*; do
+        echo -e "\t$(lspci -nns ${d##*/})"
+    done;
+done;
+```
 ##  1.5 - CPU
 ### 1.5.1 - Change CPU Gouvernor
 #### Informations:
