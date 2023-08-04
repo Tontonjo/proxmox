@@ -27,21 +27,31 @@ You'll find there some usefull commands used for proxmox and more generally debi
 
 
 # 1 - Debian General
+## 1.1 - System  
+### 1.1.1 - Date and time:  
+```shell
+echo "server ntp.metas.ch" > /etc/ntp.conf
+```
+```shell
+dpkg-reconfigure tzdata
+```
+```shell
+timedatectl set-ntp true
+```
+## 1.2 - Drives Management
 
-## 1.1 - Drives Management
-
-### 1.1.1 - Find a disc with ID:
+### 1.2.1 - Find a disc with ID:
 ```shell
 ls /dev/disk/by-id/ -la
 ```
 ```shell
 ls /dev/disk/by-id/ -la | grep "serial"
 ```
-### 1.1.2 - list disk informations: Replace X
+### 1.2.2 - list disk informations: Replace X
 ```shell
 lsblk -o name,model,serial,uuid /dev/sdX
 ```
-###  1.1.3 - find disk UUID or partition UUID
+###  1.2.3 - find disk UUID or partition UUID
 ```shell
 ls -l /dev/disk/by-uuid
 ```
@@ -49,24 +59,25 @@ ls -l /dev/disk/by-uuid
 ls -l /dev/disk/by-partuuid
 ```
 
-### 1.1.4 - Wipe Disk
+### 1.2.4 - Wipe Disk
 ```shell
 wipefs -af /dev/sdX
 ```
-### 1.1.5 - Read actual partition status after change
+### 1.2.5 - Read actual partition status after change
 ```shell
 hdparm -z /dev/sdX
 ```
 ```shell
 echo 1 > /sys/block/sdX/device/rescan
 ```  
-###  1.1.6 - Find the actual blocksize of all disks - Usually 4k
+###  1.2.6 - Find the actual blocksize of all disks - Usually 4k
 ```shell
 lsblk -o NAME,PHY-SeC
 ```
 
-##  1.2 - Zpool Management  
-###  1.2.1 - Remove import of removed pools at startup:  
+
+##  1.3 - Zpool Management  
+###  1.3.1 - Remove import of removed pools at startup:  
 - Identify your pools:
 ```shell
 systemctl | grep zfs
@@ -75,36 +86,36 @@ systemctl | grep zfs
 ```shell
 systemctl disable zfs-import@zpoolname.service
 ```
-### 1.2.2 - Find ARC RAM usage for Zpool:
+### 1.3.2 - Find ARC RAM usage for Zpool:
 ```shell
 awk '/^size/ { print $1 " " $3 / 1048576 }' < /proc/spl/kstat/zfs/arcstats
 ```
 
-### 1.2.3 - Find Compression ratio and used space:
+### 1.3.3 - Find Compression ratio and used space:
 ```shell
 zfs list -o name,avail,used,refer,lused,lrefer,mountpoint,compress,compressratio
 ``` 
 
-### 1.2.4 - Replace Zpool Drive:
+### 1.3.4 - Replace Zpool Drive:
 ```shell
 zpool replace pool /old/drive /new/drive
 ```
 
-### 1.2.5 - Mark a pool as OK - Clear errors on pool and drives
+### 1.3.5 - Mark a pool as OK - Clear errors on pool and drives
 ```shell
 zpool clear "poolname"
 ```
 
-### 1.2.6 - Get Zpool version:
+### 1.3.6 - Get Zpool version:
 ```shell
 zpool --version
 ```
 
-### 1.2.7 - Ugrade a zpool:
+### 1.3.7 - Ugrade a zpool:
 ```shell
 zpool upgrade "$poolname"
 ```  
-### 1.2.8 - Zpool options settings
+### 1.3.8 - Zpool options settings
 - Get your $poolname
 ```shell
 zfs list
@@ -123,22 +134,22 @@ zfs set atime=off $poolname
 ```shell
 zfs set compression=off $poolname
 ```  
-### 1.2.9 - If pool is created with /dev/sdX instead of ID (wich may lead to mount fail)
+### 1.3.9 - If pool is created with /dev/sdX instead of ID (wich may lead to mount fail)
 ```shell
 zpool export $poolname
 ```  
 ```shell
 zpool import -d /dev/disk/by-id -aN
 ```  
-## 1.3 - Monitoring
+## 1.4 - Monitoring
 
 ### 1.3.1 - ZFS live disk IO
 ```shell
 watch -n 1 "zpool iostat -v"
 ```
 
-##  1.4 - PCI express  
-### 1.4.1 - Determine bus speed of a PCI-E Device ( and others infos if you remove the grep part )  
+##  1.5 - PCI express  
+### 1.5.1 - Determine bus speed of a PCI-E Device ( and others infos if you remove the grep part )  
 - Identify your device:
 ```shell
 lspci
@@ -147,7 +158,7 @@ lspci
 ```shell
 lspci -vv -s 2a:00.0
 ```  
-### 1.4.2 - Find IOMMU groups
+### 1.5.2 - Find IOMMU groups
 #### An IOMMU group is the smallest set of physical devices that can be passed to a virtual machine  
 ```shell
 #!/bin/bash
@@ -159,8 +170,8 @@ for g in $(find /sys/kernel/iommu_groups/* -maxdepth 0 -type d | sort -V); do
     done;
 done;
 ```
-##  1.5 - CPU
-### 1.5.1 - Change CPU Gouvernor
+##  1.6 - CPU
+### 1.6.1 - Change CPU Gouvernor
 #### Informations:
 https://www.kernel.org/doc/Documentation/cpu-freq/governors.txt
 #### Get actual CPU gouvernor
@@ -182,12 +193,12 @@ crontab -e
 ```shell
 @reboot echo "ondemand" | tee /sys/devices/system/cpu/cpu*/cpufreq/scaling_governor >/dev/null 2>&1
 ```  
-## 1.6 - Benchmark and performance test
-### 1.6.1 - Test with DD - oflag=dsync -> ignore cache for accurate result
+## 1.7 - Benchmark and performance test
+### 1.7.1 - Test with DD - oflag=dsync -> ignore cache for accurate result
 ```shell
 dd if=/dev/zero of=/$pathtostorage/test1.img bs=1G count=1 oflag=dsync
 ```
-### 1.6.2 - Test speed of drive (hdparm needed)
+### 1.7.2 - Test speed of drive (hdparm needed)
 ```shell
 hdparm -t /dev/$sdX
 ```  
