@@ -30,9 +30,6 @@ You'll find there some usefull commands used for proxmox and more generally debi
 ## 1.1 - System  
 ### 1.1.1 - Date and time:  
 ```shell
-echo "server ntp.metas.ch" > /etc/ntp.conf
-```
-```shell
 dpkg-reconfigure tzdata
 ```
 ```shell
