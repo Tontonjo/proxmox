@@ -30,7 +30,7 @@ Here it is: CPU_SCALE.SH!
 - You can choose what CPU gouvernor you want to use (i recommand switching between schedutil and powersave)
 
 - Here's a power consumption report for my server:
-![screenshot]([https://i.ibb.co/Tr3rbw0/Screenshot-2022-12-29-101432.png]
+![screenshot](https://i.ibb.co/Tr3rbw0/Screenshot-2022-12-29-101432.png)
 
 
 # Usefull commands:
