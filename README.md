@@ -20,7 +20,18 @@ If you want to setup and update your Proxmox VE / BS server, please have a look 
 - Security with Fail2ban  
 - snmp  
 - mail notifications  
-- Backup and restoration of Proxmox VE / BS configurations 
+- Backup and restoration of Proxmox VE / BS configurations
+
+## CPU_SCALE
+A home server may be power consuming and i wanted something to have a compromise between performance and energy saving without having to power-off the server
+Here it is: CPU_SCALE.SH!
+- The script, when configured to start at boot or manually executed for testing purpose, will check for the cpu load and ramp-up to a better CPU Gouvernor when calculation power is needed.
+- You can configure the ramp-up and ramp-down time
+- You can choose what CPU gouvernor you want to use (i recommand switching between schedutil and powersave)
+
+- Here's a power consumption report for my server:
+![screenshot]([https://i.ibb.co/Tr3rbw0/Screenshot-2022-12-29-101432.png](https://i.ibb.co/F5R7qCx/Screenshot-2023-08-26-013402-Copy.png))  
+  
 
 # Usefull commands:
 You'll find there some usefull commands used for proxmox and more generally debian
