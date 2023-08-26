@@ -20,7 +20,7 @@ averageloadupscaletime=3					# time to get average CPU load value in order to up
 averageloaddownscaletime=10					# time to get average CPU load value in order to downscale
 
 lowloadgouvernor=powersave		# CPU Scheduler to use when low usage
-upscalevalue=50					# At wich usage when LOW load gouvernor is set the CPU will upscale to hi load
+upscalevalue=50					# At wich usage when LOW load gouvernor is set the CPU will upscale to high load
 
 highloadgouvernor=schedutil		# CPU Scheduler to use when low usage
 downscalevalue=10				# At wich usage when HIGH load gouvernor is set the CPU will downscale to low load
