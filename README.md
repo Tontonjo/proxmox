@@ -24,7 +24,8 @@ If you want to setup and update your Proxmox VE / BS server, please have a look 
 
 ## CPU_SCALE
 A home server may be power consuming and i wanted something to have a compromise between performance and energy saving without having to power-off the server
-Here it is: CPU_SCALE.SH!
+Here it is: [![CPU_SCALE.SH](https://github.com/Tontonjo/proxmox/blob/master/cpu_scale.sh)
+
 - The script, when configured to start at boot or manually executed for testing purpose, will check for the cpu load and ramp-up to a better CPU Gouvernor when calculation power is needed.
 - You can configure the ramp-up and ramp-down time
 - You can choose what CPU gouvernor you want to use (i recommand switching between schedutil and powersave)
