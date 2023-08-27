@@ -30,7 +30,7 @@ Here it is: [CPU_SCALE.SH](https://github.com/Tontonjo/proxmox/blob/master/cpu_s
 - You can configure the ramp-up and ramp-down time
 - You can choose what CPU gouvernor you want to use (i recommand switching between schedutil and powersave)
 
-- Here's a power consumption report for my server:  
+Here's a power consumption report for my server:  
 ![screenshot](https://i.ibb.co/F5R7qCx/Screenshot-2023-08-26-013402-Copy.png)  
 
 
