@@ -33,19 +33,22 @@ if [ $(dpkg-query -W -f='${Status}' sysstat 2>/dev/null | grep -c "ok installed"
 	apt-get install -y sysstat;
 fi
 echo "- Starting Script" >> $execdir/cpu_scale.log
-echo "- Available gouvernors:" >> $execdir/cpu_scale.log
-cat /sys/devices/system/cpu/cpu0/cpufreq/scaling_available_governors >> $execdir/cpu_scale.log
+
 # Ensuring needed gouvernors are available
 if cat /sys/devices/system/cpu/cpu0/cpufreq/scaling_available_governors | grep -qi $lowloadgouvernor; then
 		if cat /sys/devices/system/cpu/cpu0/cpufreq/scaling_available_governors | grep -qi $highloadgouvernor; then
 		echo "- Starting Script" 
 	else 
 		echo "- Missing CPU Gouvernor $highloadgouvernor - check in logs for the list of availables ones on your system"
+  		echo "- Available gouvernors:"
+		cat /sys/devices/system/cpu/cpu0/cpufreq/scaling_available_governors
 		sleep 5
 		exit
 	fi
 else 
 	echo "- Missing CPU Gouvernor $lowloadgouvernor - check in logs for the list of availables ones on your system" 
+   	echo "- Available gouvernors:"
+	cat /sys/devices/system/cpu/cpu0/cpufreq/scaling_available_governors
 	sleep 5
 	exit
 fi
