@@ -14,6 +14,7 @@
 # Version 1.0: Proof of concept
 # Version 1.1: Loop is better than cron, will run everytime the script end
 # Version 1.2: Use sar to get accurate average cpu load value
+# Version 1.3: ensure the gouvernor is available
 
 # --------------------- Settings ------------------------------------
 averageloadupscaletime=3					# time to get average CPU load value in order to upscale
@@ -32,6 +33,23 @@ if [ $(dpkg-query -W -f='${Status}' sysstat 2>/dev/null | grep -c "ok installed"
 	apt-get install -y sysstat;
 fi
 echo "- Starting Script" >> $execdir/cpu_scale.log
+echo "- Available gouvernors:" >> $execdir/cpu_scale.log
+
+# Ensuring needed gouvernors are available
+if cat /sys/devices/system/cpu/cpu0/cpufreq/scaling_available_governors | grep -qi $lowloadgouvernor; then
+		if cat /sys/devices/system/cpu/cpu0/cpufreq/scaling_available_governors | grep -qi $highloadgouvernor; then
+		echo "- Starting Script" 
+	else 
+		echo "- Missing CPU Gouvernor $highloadgouvernor - check in logs for the list of availables ones on your system"
+		sleep 5
+		exit
+	fi
+else 
+	echo "- Missing CPU Gouvernor $lowloadgouvernor - check in logs for the list of availables ones on your system" 
+	sleep 5
+	exit
+fi
+
 while true; do 
 # --------------------- loop Variables ------------------------------------
 actualgouvernor=$(cat /sys/devices/system/cpu/cpu0/cpufreq/scaling_governor)
