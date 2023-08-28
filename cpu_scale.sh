@@ -34,7 +34,7 @@ if [ $(dpkg-query -W -f='${Status}' sysstat 2>/dev/null | grep -c "ok installed"
 fi
 echo "- Starting Script" >> $execdir/cpu_scale.log
 echo "- Available gouvernors:" >> $execdir/cpu_scale.log
-
+cat /sys/devices/system/cpu/cpu0/cpufreq/scaling_available_governors >> $execdir/cpu_scale.log
 # Ensuring needed gouvernors are available
 if cat /sys/devices/system/cpu/cpu0/cpufreq/scaling_available_governors | grep -qi $lowloadgouvernor; then
 		if cat /sys/devices/system/cpu/cpu0/cpufreq/scaling_available_governors | grep -qi $highloadgouvernor; then
