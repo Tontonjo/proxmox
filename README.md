@@ -37,6 +37,23 @@ Here's a power consumption report for my server:
 # Usefull commands:
 You'll find there some usefull commands used for proxmox and more generally debian
 
+Menu:  
+1 - Debian General  
+1.1 - System  
+1.2 - Drives Management  
+1.3 - Zpool Management  
+1.4 - Monitoring  
+1.5 - PCI express  
+
+2 - Proxmox Virtual Environement  
+2.1 - Services management  
+2.2 - Proxmox commands  
+2.3 - VM Management  
+
+3 - Proxmox Backup Server  
+3.1 - Recover / add an existing datastore  
+
+4 - Usefull tools  
 
 # 1 - Debian General
 ## 1.1 - System  
@@ -152,7 +169,7 @@ zpool import -d /dev/disk/by-id -aN
 ```  
 ## 1.4 - Monitoring
 
-### 1.3.1 - ZFS live disk IO
+### 1.4.1 - ZFS live disk IO
 ```shell
 watch -n 1 "zpool iostat -v"
 ```
@@ -212,7 +229,7 @@ dd if=/dev/zero of=/$pathtostorage/test1.img bs=1G count=1 oflag=dsync
 hdparm -t /dev/$sdX
 ```  
 # 2 - Proxmox Virtual Environement  
-## 2.1 - Services management:  
+## 2.1 - Services management  
 ### 2.1.1 - Stop all services:  
 ```shell
 for i in pve-cluster pvedaemon vz qemu-server pveproxy pve-cluster; do systemctl stop $i ; done
@@ -254,7 +271,7 @@ qemu-img convert -O qcow2 -f raw $absolutepath OUTPUT.qcow2
 
 ## 3 - Proxmox Backup Server
 
-### 3.1 - Recover / add an existing datastore:
+### 3.1 - Recover / add an existing datastore  
 - edit "/etc/proxmox-backup/datastore.cfg"
 ```shell
 datastore: backup
@@ -267,7 +284,7 @@ datastore: backup
 	prune-schedule 2,22:30
 ```  
 
-# Usefull tools:
+## 4 - Usefull tools
 Ioping - usefull to simulate drive activity and therefore locating it.
 
 s-tui - Graphical interface to monitor system performances
