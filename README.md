@@ -285,7 +285,7 @@ datastore: backup
 ```  
 Ensure the rights are corrects:  
 ```shell
-chown backup:backup .chunks ct vm .locks -R
+chown backup:backup -R "/path/to/datastore"
 ```
 
 ## 4 - Usefull tools
