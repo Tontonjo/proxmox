@@ -283,6 +283,10 @@ datastore: backup
 	path /mnt/datastore/backup
 	prune-schedule 2,22:30
 ```  
+Ensure the rights are corrects:  
+```shell
+chown backup:backup .chunks ct vm .locks -R
+```
 
 ## 4 - Usefull tools
 Ioping - usefull to simulate drive activity and therefore locating it.
