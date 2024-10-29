@@ -44,6 +44,8 @@ Menu:
 1.3 - Zpool Management  
 1.4 - Monitoring  
 1.5 - PCI express  
+1.6 - CPU  
+1.7 - Benchmark and performance test  
 
 2 - Proxmox Virtual Environement  
 2.1 - Services management  
